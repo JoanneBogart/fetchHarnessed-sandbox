@@ -114,21 +114,46 @@ class getResults():
         raiString = "('" + string.join(raiList, "','") + "')"
         print "raiString: ", raiString, "\n"
             
+        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.hardwareId as hid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where {abbr}.schemaName='"
+        genQuery += self.schemaName
+        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI,resname"
+        floatQuery = genQuery.format(abbr='FRH', 
+                                     resultsTable='FloatResultHarnessed')
+        intQuery = genQuery.format(abbr='IRH', 
+                                   resultsTable='IntResultHarnessed')
+        stringQuery = genQuery.format(abbr='SRH', 
+                                      resultsTable='StringResultHarnessed')
 
-        rquery = "select FRH.name as FRHname,FRH.value as FRHvalue,FRH.schemaInstance as FRHsI,A.id as aid,A.hardwareId as hid,ASH.activityStatusId as actStatus from FloatResultHarnessed FRH join Activity A on FRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where FRH.schemaName='"
-        rquery += self.schemaName
-        rquery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, FRHsI,FRHname"
 
-        print "Monster query:\n"
-        print rquery
+        #rquery = "select FRH.name as FRHname,FRH.value as FRHvalue,FRH.schemaInstance as FRHsI,A.id as aid,A.hardwareId as hid,ASH.activityStatusId as actStatus from FloatResultHarnessed FRH join Activity A on FRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where FRH.schemaName='"
+        #rquery += self.schemaName
+        #rquery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, FRHsI,FRHname"
 
-        rresult = engine.execute(rquery)
+        print "Monster float query:\n"
+        print floatQuery
+        print "Monster int query:\n"
+        print intQuery
+        print "Monster string query:\n"
+        print stringQuery
+
+        fresult = engine.execute(floatQuery)
         #print "Found ",len(rresult), " rows"
 
-        for row in rresult:
-          print "Hid: ",row['hid'], " Aid: ",row['aid']," FRH instance: ", row['FRHsI'], "FRHname: ",row['FRHname']," FRHvalue: ",row['FRHvalue'], " Act status: ", row['actStatus']
+        for row in fresult:
+          rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
+          print rowout.format(abbr="FRH")
+          #, " Act status: ", row['actStatus']
+        iresult = engine.execute(intQuery)
 
+        for row in iresult:
+          rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
+          print rowout.format(abbr="IRH")
 
+        sresult = engine.execute(stringQuery)
+        for row in sresult:
+          rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
+          print rowout.format(abbr="SRH")
+          
     def verifyParameters(self):
         if self.htype is None:
             raise KeyError,'Missing value for "htype"'
@@ -145,9 +170,9 @@ if __name__ == "__main__":
 
     title = valueName + '-' + travelerName + '-' + htype
 
-    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
+    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
 
-    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName,  model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
+    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName,  model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
 
     engine = eT.connectDB()
 
