@@ -96,16 +96,19 @@ class getResults():
 
         # Retrieve list of all rootActivityId's which may be relevant
         # (correct process name; run on a component we care about)
-        rootsQuery = "select A.id as Aid, H.id as Hid from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id where H.id in (" + hidQuery + ") and A.id=A.rootActivityId and P.name='" + self.travelerName + "' order by H.id asc, A.id desc"
+        rootsQuery = "select A.id as Aid, H.id as Hid, H.lsstId as expSN from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id where H.id in (" + hidQuery + ") and A.id=A.rootActivityId and P.name='" + self.travelerName + "' order by H.id asc, A.id desc"
 
         print "Query to find traveler root ids of interest\n"
         print rootsQuery, "\n"
         result = engine.execute(rootsQuery)
 
+        # Make dict associating Hid and expSN and list of root id's of interest
         raiList = []
+        hardwareDict = {}
         for row in result:
             print "hid=",row['Hid']," rootId=",row['Aid']
             raiList.append(str(row['Aid']))
+            hardwareDict[row['Hid']] = row['expSN']
         if len(raiList) == 0:
             print "No results meeting criteria"
             exit(0)
@@ -114,7 +117,7 @@ class getResults():
         raiString = "('" + string.join(raiList, "','") + "')"
         print "raiString: ", raiString, "\n"
             
-        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.hardwareId as hid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where {abbr}.schemaName='"
+        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where {abbr}.schemaName='"
         genQuery += self.schemaName
         genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI,resname"
         floatQuery = genQuery.format(abbr='FRH', 
@@ -123,7 +126,6 @@ class getResults():
                                    resultsTable='IntResultHarnessed')
         stringQuery = genQuery.format(abbr='SRH', 
                                       resultsTable='StringResultHarnessed')
-
 
         #rquery = "select FRH.name as FRHname,FRH.value as FRHvalue,FRH.schemaInstance as FRHsI,A.id as aid,A.hardwareId as hid,ASH.activityStatusId as actStatus from FloatResultHarnessed FRH join Activity A on FRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where FRH.schemaName='"
         #rquery += self.schemaName
@@ -136,31 +138,55 @@ class getResults():
         print "Monster string query:\n"
         print stringQuery
 
+        self.returnData = {}
+
         fresult = engine.execute(floatQuery)
         #print "Found ",len(rresult), " rows"
 
         for row in fresult:
           rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
-          print rowout.format(abbr="FRH")
+          #print rowout.format(abbr="FRH")
           #, " Act status: ", row['actStatus']
+
+          expSN = hardwareDict[row['hid']]
+          self.storeData(expSN, row)
+
         iresult = engine.execute(intQuery)
 
         for row in iresult:
           rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
-          print rowout.format(abbr="IRH")
+          #print rowout.format(abbr="IRH")
+          expSN = hardwareDict[row['hid']]
+          self.storeData(expSN, row)
 
         sresult = engine.execute(stringQuery)
         for row in sresult:
           rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
-          print rowout.format(abbr="SRH")
-          
+          #print rowout.format(abbr="SRH")
+          expSN = hardwareDict[row['hid']]
+          self.storeData(expSN, row)
+
+        return self.returnData
+
     def verifyParameters(self):
         if self.htype is None:
             raise KeyError,'Missing value for "htype"'
         if self.schemaName is None:
             raise KeyError, 'Missing value for "schemaName"'
 
- 
+    # Store a single value, creating containing dicts as needed
+    def storeData(self, expSN, row):
+        if expSN not in self.returnData:
+            self.returnData[expSN] = expDict = {}
+            expDict['hid'] = row['hid']
+            expDict['aid'] = row['aid']
+            expDict['raid'] = row['raid']
+        else : expDict = self.returnData[expSN]
+        if row['ressI'] not in expDict:
+            expDict[row['ressI']] = instanceDict = {}
+        else: instanceDict = expDict[row['ressI']]
+        instanceDict[row['resname']] = row['resvalue']
+
 if __name__ == "__main__":
     
     schemaName = 'read_noise'
@@ -176,6 +202,16 @@ if __name__ == "__main__":
 
     engine = eT.connectDB()
 
-    ccd  = eT.getResultsJH(engine)
+    returnData  = eT.getResultsJH(engine)
+    print "keys in expDict: "
+    expDict = returnData['ITL-3800C-021']
+    for k in expDict:
+        print "Key: ", k, " Value: ", expDict[k]
+    print "hid: ", returnData['ITL-3800C-021']['hid']
+    print "raid: ", returnData['ITL-3800C-021']['raid']
+    print "aid: ", returnData['ITL-3800C-021']['aid']
+    print "Instance 1 key-value pairs:"
+    instanceDict = returnData['ITL-3800C-021'][1]
 
-
+    for k in instanceDict:
+        print "Key: ", k, " Value: ", instanceDict[k]
