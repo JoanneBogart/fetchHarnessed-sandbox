@@ -1,0 +1,385 @@
+connected to host mysql-node03.slac.stanford.edu
+hardware query is: 
+
+select H2.id as hid2 from Hardware H2 join HardwareType HT on H2.hardwareTypeId=HT.id where HT.name='ITL-CCD'and H2.model='3800C' 
+
+Query to find traveler root ids of interest
+
+select A.id as Aid, H.id as Hid, H.lsstId as expSN from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id where H.id in (select H2.id as hid2 from Hardware H2 join HardwareType HT on H2.hardwareTypeId=HT.id where HT.name='ITL-CCD'and H2.model='3800C') and A.id=A.rootActivityId and P.name='SR-EOT-1' order by H.id asc, A.id desc 
+
+hid= 3  rootId= 1110
+hid= 3  rootId= 1099
+hid= 4  rootId= 4504
+hid= 4  rootId= 4268
+hid= 4  rootId= 4229
+hid= 4  rootId= 1216
+hid= 4  rootId= 1178
+hid= 4  rootId= 1167
+hid= 7  rootId= 1086
+hid= 8  rootId= 1267
+hid= 8  rootId= 1266
+hid= 8  rootId= 1265
+hid= 8  rootId= 1264
+hid= 8  rootId= 968
+hid= 8  rootId= 924
+hid= 8  rootId= 773
+hid= 9  rootId= 937
+hid= 10  rootId= 939
+hid= 10  rootId= 754
+hid= 11  rootId= 1156
+hid= 12  rootId= 870
+hid= 12  rootId= 813
+hid= 13  rootId= 1030
+hid= 13  rootId= 938
+hid= 15  rootId= 3272
+hid= 15  rootId= 3138
+hid= 15  rootId= 2911
+hid= 15  rootId= 2908
+hid= 15  rootId= 2903
+hid= 17  rootId= 3700
+hid= 17  rootId= 3627
+hid= 17  rootId= 3604
+hid= 17  rootId= 3592
+hid= 18  rootId= 3759
+hid= 18  rootId= 3493
+hid= 18  rootId= 3448
+hid= 18  rootId= 3363
+hid= 18  rootId= 2880
+hid= 18  rootId= 2843
+hid= 18  rootId= 2790
+hid= 18  rootId= 2771
+hid= 19  rootId= 3827
+hid= 19  rootId= 3816
+hid= 19  rootId= 3805
+hid= 38  rootId= 6029
+hid= 48  rootId= 4614
+hid= 49  rootId= 5977
+hid= 50  rootId= 4691
+hid= 50  rootId= 4680
+hid= 50  rootId= 4660
+hid= 51  rootId= 4570
+hid= 52  rootId= 4799
+hid= 63  rootId= 9638
+hid= 63  rootId= 9513
+hid= 63  rootId= 9471
+hid= 63  rootId= 9419
+hid= 63  rootId= 9235
+raiString:  ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') 
+
+Monster float query:
+
+select FRH.name as resname,FRH.value as resvalue,FRH.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from FloatResultHarnessed FRH join Activity A on FRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where FRH.schemaName='read_noise' and A.rootActivityId in ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname
+Monster int query:
+
+select IRH.name as resname,IRH.value as resvalue,IRH.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from IntResultHarnessed IRH join Activity A on IRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where IRH.schemaName='read_noise' and A.rootActivityId in ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname
+Monster string query:
+
+select SRH.name as resname,SRH.value as resvalue,SRH.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from StringResultHarnessed SRH join Activity A on SRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where SRH.schemaName='read_noise' and A.rootActivityId in ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname
+
+
+Keys in dict for component:  ITL-3800C-091
+hardware id:  18
+root activity id:  3759
+activity id:  3783
+Instance # 1  dict:  {'system_noise': 6.94780158996582, 'amp': 1L, 'total_noise': 21.628280639648438, 'read_noise': 20.481958389282227}
+Instance # 2  dict:  {'system_noise': 7.337655544281006, 'amp': 2L, 'total_noise': 24.854656219482422, 'read_noise': 23.74684715270996}
+Instance # 3  dict:  {'system_noise': 5.901809215545654, 'amp': 3L, 'total_noise': 13.263104438781738, 'read_noise': 11.877650260925293}
+Instance # 4  dict:  {'system_noise': 5.988856792449951, 'amp': 4L, 'total_noise': 14.20319652557373, 'read_noise': 12.87883472442627}
+Instance # 5  dict:  {'system_noise': 5.955551624298096, 'amp': 5L, 'total_noise': 10.393360137939453, 'read_noise': 8.51782512664795}
+Instance # 6  dict:  {'system_noise': 5.904789447784424, 'amp': 6L, 'total_noise': 16.209260940551758, 'read_noise': 15.095483779907227}
+Instance # 7  dict:  {'system_noise': 5.854523658752441, 'amp': 7L, 'total_noise': 12.955437660217285, 'read_noise': 11.557159423828125}
+Instance # 8  dict:  {'system_noise': 5.735593318939209, 'amp': 8L, 'total_noise': 25.3338680267334, 'read_noise': 24.67605972290039}
+Instance # 9  dict:  {'system_noise': 5.40555477142334, 'amp': 9L, 'total_noise': 12.945630073547363, 'read_noise': 11.763049125671387}
+Instance # 10  dict:  {'system_noise': 6.5915913581848145, 'amp': 10L, 'total_noise': 15.56108570098877, 'read_noise': 14.096039772033691}
+Instance # 11  dict:  {'system_noise': 5.77433443069458, 'amp': 11L, 'total_noise': 16.135639190673828, 'read_noise': 15.067046165466309}
+Instance # 12  dict:  {'system_noise': 4.757457256317139, 'amp': 12L, 'total_noise': 34.61089324951172, 'read_noise': 34.28236770629883}
+Instance # 13  dict:  {'system_noise': 5.830050945281982, 'amp': 13L, 'total_noise': 13.981657981872559, 'read_noise': 12.708157539367676}
+Instance # 14  dict:  {'system_noise': 6.18794059753418, 'amp': 14L, 'total_noise': 16.1644287109375, 'read_noise': 14.933122634887695}
+Instance # 15  dict:  {'system_noise': 6.190287113189697, 'amp': 15L, 'total_noise': 13.313216209411621, 'read_noise': 11.786520957946777}
+Instance # 16  dict:  {'system_noise': 6.689395427703857, 'amp': 16L, 'total_noise': 15.543516159057617, 'read_noise': 14.030426979064941}
+
+
+Keys in dict for component:  ITL-3800C-097
+hardware id:  17
+root activity id:  3700
+activity id:  3726
+Instance # 1  dict:  {'system_noise': 6.295193672180176, 'amp': 1L, 'total_noise': 14.931122779846191, 'read_noise': 13.539163589477539}
+Instance # 2  dict:  {'system_noise': 7.105147838592529, 'amp': 2L, 'total_noise': 19.012741088867188, 'read_noise': 17.635225296020508}
+Instance # 3  dict:  {'system_noise': 5.586465358734131, 'amp': 3L, 'total_noise': 11.962200164794922, 'read_noise': 10.577600479125977}
+Instance # 4  dict:  {'system_noise': 5.80835485458374, 'amp': 4L, 'total_noise': 12.522671699523926, 'read_noise': 11.094157218933105}
+Instance # 5  dict:  {'system_noise': 5.798591136932373, 'amp': 5L, 'total_noise': 11.084301948547363, 'read_noise': 9.4465913772583}
+Instance # 6  dict:  {'system_noise': 5.8786163330078125, 'amp': 6L, 'total_noise': 11.310247421264648, 'read_noise': 9.662482261657715}
+Instance # 7  dict:  {'system_noise': 5.690197467803955, 'amp': 7L, 'total_noise': 10.759535789489746, 'read_noise': 9.1317720413208}
+Instance # 8  dict:  {'system_noise': 3.9604904651641846, 'amp': 8L, 'total_noise': 29.091489791870117, 'read_noise': 28.82063865661621}
+Instance # 9  dict:  {'system_noise': 4.453840255737305, 'amp': 9L, 'total_noise': 12.631325721740723, 'read_noise': 11.820054054260254}
+Instance # 10  dict:  {'system_noise': 5.265775203704834, 'amp': 10L, 'total_noise': 10.942343711853027, 'read_noise': 9.592000961303711}
+Instance # 11  dict:  {'system_noise': 4.629593849182129, 'amp': 11L, 'total_noise': 12.868220329284668, 'read_noise': 12.006579399108887}
+Instance # 12  dict:  {'system_noise': 5.272892951965332, 'amp': 12L, 'total_noise': 14.163506507873535, 'read_noise': 13.14539909362793}
+Instance # 13  dict:  {'system_noise': 4.81564998626709, 'amp': 13L, 'total_noise': 10.079774856567383, 'read_noise': 8.855019569396973}
+Instance # 14  dict:  {'system_noise': 5.033544063568115, 'amp': 14L, 'total_noise': 10.919645309448242, 'read_noise': 9.690309524536133}
+Instance # 15  dict:  {'system_noise': 5.153728008270264, 'amp': 15L, 'total_noise': 10.110663414001465, 'read_noise': 8.698540687561035}
+Instance # 16  dict:  {'system_noise': 5.516024112701416, 'amp': 16L, 'total_noise': 12.189760208129883, 'read_noise': 10.870314598083496}
+
+
+Keys in dict for component:  ITL-3800C-102
+hardware id:  38
+root activity id:  6029
+activity id:  6322
+Instance # 1  dict:  {'system_noise': 1.3977231979370117, 'amp': 1L, 'total_noise': 26.226299285888672, 'read_noise': 26.189027786254883}
+Instance # 2  dict:  {'system_noise': 0.0, 'amp': 2L, 'total_noise': 0.0, 'read_noise': 0.0}
+Instance # 3  dict:  {'system_noise': 5.835563659667969, 'amp': 3L, 'total_noise': 12.048166275024414, 'read_noise': 10.54061222076416}
+Instance # 4  dict:  {'system_noise': 5.787478446960449, 'amp': 4L, 'total_noise': 10.671887397766113, 'read_noise': 8.966285705566406}
+Instance # 5  dict:  {'system_noise': 5.597987651824951, 'amp': 5L, 'total_noise': 11.037125587463379, 'read_noise': 9.512133598327637}
+Instance # 6  dict:  {'system_noise': 0.0, 'amp': 6L, 'total_noise': 0.0, 'read_noise': 0.0}
+Instance # 7  dict:  {'system_noise': 5.278575897216797, 'amp': 7L, 'total_noise': 11.856633186340332, 'read_noise': 10.61679744720459}
+Instance # 8  dict:  {'system_noise': 6.1284356117248535, 'amp': 8L, 'total_noise': 15.999622344970703, 'read_noise': 14.779383659362793}
+Instance # 9  dict:  {'system_noise': 4.646083354949951, 'amp': 9L, 'total_noise': 12.804824829101562, 'read_noise': 11.932201385498047}
+Instance # 10  dict:  {'system_noise': 5.510387897491455, 'amp': 10L, 'total_noise': 9.726289749145508, 'read_noise': 8.014758110046387}
+Instance # 11  dict:  {'system_noise': 4.882735729217529, 'amp': 11L, 'total_noise': 10.330463409423828, 'read_noise': 9.103700637817383}
+Instance # 12  dict:  {'system_noise': 5.2048749923706055, 'amp': 12L, 'total_noise': 14.215252876281738, 'read_noise': 13.228102684020996}
+Instance # 13  dict:  {'system_noise': 4.569918155670166, 'amp': 13L, 'total_noise': 14.479578971862793, 'read_noise': 13.739506721496582}
+Instance # 14  dict:  {'system_noise': 5.035532474517822, 'amp': 14L, 'total_noise': 14.441020965576172, 'read_noise': 13.534640312194824}
+Instance # 15  dict:  {'system_noise': 5.116418361663818, 'amp': 15L, 'total_noise': 14.362529754638672, 'read_noise': 13.420303344726562}
+Instance # 16  dict:  {'system_noise': 5.528003692626953, 'amp': 16L, 'total_noise': 10.552278518676758, 'read_noise': 8.988423347473145}
+
+
+Keys in dict for component:  ITL-3800C-042
+hardware id:  3
+root activity id:  1110
+activity id:  1135
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 1L, 'total_noise': 7.036166667938232, 'read_noise': 7.036166667938232}
+Instance # 2  dict:  {'system_noise': 0.0, 'amp': 2L, 'total_noise': 7.022903919219971, 'read_noise': 7.022903919219971}
+Instance # 3  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 7.045011520385742, 'read_noise': 7.045011520385742}
+Instance # 4  dict:  {'system_noise': 0.0, 'amp': 4L, 'total_noise': 6.923670291900635, 'read_noise': 6.923670291900635}
+Instance # 5  dict:  {'system_noise': 0.0, 'amp': 5L, 'total_noise': 7.194958686828613, 'read_noise': 7.194958686828613}
+Instance # 6  dict:  {'system_noise': 0.0, 'amp': 6L, 'total_noise': 7.019373893737793, 'read_noise': 7.019373893737793}
+Instance # 7  dict:  {'system_noise': 0.0, 'amp': 7L, 'total_noise': 7.063739776611328, 'read_noise': 7.063739776611328}
+Instance # 8  dict:  {'system_noise': 0.0, 'amp': 8L, 'total_noise': 7.585178375244141, 'read_noise': 7.585178375244141}
+Instance # 9  dict:  {'system_noise': 0.0, 'amp': 9L, 'total_noise': 0.0, 'read_noise': 0.0}
+Instance # 10  dict:  {'system_noise': 0.0, 'amp': 10L, 'total_noise': 6.946294784545898, 'read_noise': 6.946294784545898}
+Instance # 11  dict:  {'system_noise': 0.0, 'amp': 11L, 'total_noise': 7.035651683807373, 'read_noise': 7.035651683807373}
+Instance # 12  dict:  {'system_noise': 0.0, 'amp': 12L, 'total_noise': 7.170101642608643, 'read_noise': 7.170101642608643}
+Instance # 13  dict:  {'system_noise': 0.0, 'amp': 13L, 'total_noise': 6.959457874298096, 'read_noise': 6.959457874298096}
+Instance # 14  dict:  {'system_noise': 0.0, 'amp': 14L, 'total_noise': 6.9189252853393555, 'read_noise': 6.9189252853393555}
+Instance # 15  dict:  {'system_noise': 0.0, 'amp': 15L, 'total_noise': 6.893244743347168, 'read_noise': 6.893244743347168}
+Instance # 16  dict:  {'system_noise': 0.0, 'amp': 16L, 'total_noise': 11.20700454711914, 'read_noise': 11.20700454711914}
+
+
+Keys in dict for component:  ITL-3800C-098
+hardware id:  15
+root activity id:  3272
+activity id:  3332
+Instance # 1  dict:  {'system_noise': 5.393630504608154, 'amp': 1L, 'total_noise': 14.95686149597168, 'read_noise': 13.95050048828125}
+Instance # 2  dict:  {'system_noise': 5.698746204376221, 'amp': 2L, 'total_noise': 17.294780731201172, 'read_noise': 16.32892417907715}
+Instance # 3  dict:  {'system_noise': 4.537178039550781, 'amp': 3L, 'total_noise': 12.669042587280273, 'read_noise': 11.82872200012207}
+Instance # 4  dict:  {'system_noise': 4.669744491577148, 'amp': 4L, 'total_noise': 14.196285247802734, 'read_noise': 13.406267166137695}
+Instance # 5  dict:  {'system_noise': 4.631550312042236, 'amp': 5L, 'total_noise': 12.5994291305542, 'read_noise': 11.717267990112305}
+Instance # 6  dict:  {'system_noise': 4.724823474884033, 'amp': 6L, 'total_noise': 13.230685234069824, 'read_noise': 12.358280181884766}
+Instance # 7  dict:  {'system_noise': 4.611414432525635, 'amp': 7L, 'total_noise': 12.416993141174316, 'read_noise': 11.528944969177246}
+Instance # 8  dict:  {'system_noise': 4.6816086769104, 'amp': 8L, 'total_noise': 17.55235481262207, 'read_noise': 16.916492462158203}
+Instance # 9  dict:  {'system_noise': 4.199301242828369, 'amp': 9L, 'total_noise': 12.729840278625488, 'read_noise': 12.017266273498535}
+Instance # 10  dict:  {'system_noise': 4.849595069885254, 'amp': 10L, 'total_noise': 11.726988792419434, 'read_noise': 10.677251815795898}
+Instance # 11  dict:  {'system_noise': 4.214692115783691, 'amp': 11L, 'total_noise': 13.898079872131348, 'read_noise': 13.24360179901123}
+Instance # 12  dict:  {'system_noise': 4.796669960021973, 'amp': 12L, 'total_noise': 12.603986740112305, 'read_noise': 11.6555757522583}
+Instance # 13  dict:  {'system_noise': 4.313377857208252, 'amp': 13L, 'total_noise': 13.29810905456543, 'read_noise': 12.57912826538086}
+Instance # 14  dict:  {'system_noise': 4.490819454193115, 'amp': 14L, 'total_noise': 12.283221244812012, 'read_noise': 11.432849884033203}
+Instance # 15  dict:  {'system_noise': 4.504865646362305, 'amp': 15L, 'total_noise': 11.994733810424805, 'read_noise': 11.116645812988281}
+Instance # 16  dict:  {'system_noise': 4.802644729614258, 'amp': 16L, 'total_noise': 13.162688255310059, 'read_noise': 12.255242347717285}
+
+
+Keys in dict for component:  ITL-3800C-034
+hardware id:  63
+root activity id:  9638
+activity id:  9694
+Instance # 1  dict:  {'system_noise': 3.9298512935638428, 'amp': 1L, 'total_noise': 6.950024127960205, 'read_noise': 5.73228645324707}
+Instance # 2  dict:  {'system_noise': 3.7735583782196045, 'amp': 2L, 'total_noise': 7.0712480545043945, 'read_noise': 5.980201244354248}
+Instance # 3  dict:  {'system_noise': 3.7450203895568848, 'amp': 3L, 'total_noise': 7.047269821166992, 'read_noise': 5.969827175140381}
+Instance # 4  dict:  {'system_noise': 3.8564584255218506, 'amp': 4L, 'total_noise': 7.246079444885254, 'read_noise': 6.13460636138916}
+Instance # 5  dict:  {'system_noise': 3.758847713470459, 'amp': 5L, 'total_noise': 17.572187423706055, 'read_noise': 17.165454864501953}
+Instance # 6  dict:  {'system_noise': 3.4327104091644287, 'amp': 6L, 'total_noise': 18.299135208129883, 'read_noise': 17.97428321838379}
+Instance # 7  dict:  {'system_noise': 3.944453716278076, 'amp': 7L, 'total_noise': 9.707597732543945, 'read_noise': 8.870102882385254}
+Instance # 8  dict:  {'system_noise': 2.0212249755859375, 'amp': 8L, 'total_noise': 27.036752700805664, 'read_noise': 26.961095809936523}
+Instance # 9  dict:  {'system_noise': 2.575299024581909, 'amp': 9L, 'total_noise': 30.51929473876953, 'read_noise': 30.410446166992188}
+Instance # 10  dict:  {'system_noise': 4.4566473960876465, 'amp': 10L, 'total_noise': 7.488798141479492, 'read_noise': 6.018338203430176}
+Instance # 11  dict:  {'system_noise': 3.50520920753479, 'amp': 11L, 'total_noise': 7.252613544464111, 'read_noise': 6.349323749542236}
+Instance # 12  dict:  {'system_noise': 3.685863733291626, 'amp': 12L, 'total_noise': 7.2178521156311035, 'read_noise': 6.205787658691406}
+Instance # 13  dict:  {'system_noise': 3.676107168197632, 'amp': 13L, 'total_noise': 7.232330322265625, 'read_noise': 6.228389263153076}
+Instance # 14  dict:  {'system_noise': 3.895081043243408, 'amp': 14L, 'total_noise': 7.42919921875, 'read_noise': 6.326242446899414}
+Instance # 15  dict:  {'system_noise': 3.5190484523773193, 'amp': 15L, 'total_noise': 8.01141357421875, 'read_noise': 7.197155475616455}
+Instance # 16  dict:  {'system_noise': 2.036050796508789, 'amp': 16L, 'total_noise': 28.571186065673828, 'read_noise': 28.498546600341797}
+
+
+Keys in dict for component:  ITL-3800C-145
+hardware id:  49
+root activity id:  5977
+activity id:  6009
+Instance # 1  dict:  {'system_noise': 5.885283470153809, 'amp': 1L, 'total_noise': 14.674328804016113, 'read_noise': 13.4424467086792}
+Instance # 2  dict:  {'system_noise': 5.454875469207764, 'amp': 2L, 'total_noise': 14.121002197265625, 'read_noise': 13.024863243103027}
+Instance # 3  dict:  {'system_noise': 5.591034889221191, 'amp': 3L, 'total_noise': 14.305997848510742, 'read_noise': 13.16821575164795}
+Instance # 4  dict:  {'system_noise': 5.619119644165039, 'amp': 4L, 'total_noise': 12.917962074279785, 'read_noise': 11.631819725036621}
+Instance # 5  dict:  {'system_noise': 5.393996715545654, 'amp': 5L, 'total_noise': 13.778738021850586, 'read_noise': 12.679054260253906}
+Instance # 6  dict:  {'system_noise': 5.406094551086426, 'amp': 6L, 'total_noise': 13.44808578491211, 'read_noise': 12.313616752624512}
+Instance # 7  dict:  {'system_noise': 4.864878177642822, 'amp': 7L, 'total_noise': 15.683838844299316, 'read_noise': 14.910257339477539}
+Instance # 8  dict:  {'system_noise': 5.491510391235352, 'amp': 8L, 'total_noise': 13.497613906860352, 'read_noise': 12.329998970031738}
+Instance # 9  dict:  {'system_noise': 4.533910751342773, 'amp': 9L, 'total_noise': 14.21923828125, 'read_noise': 13.477031707763672}
+Instance # 10  dict:  {'system_noise': 5.336491584777832, 'amp': 10L, 'total_noise': 15.842942237854004, 'read_noise': 14.917126655578613}
+Instance # 11  dict:  {'system_noise': 4.7392377853393555, 'amp': 11L, 'total_noise': 16.486066818237305, 'read_noise': 15.790186882019043}
+Instance # 12  dict:  {'system_noise': 5.388603687286377, 'amp': 12L, 'total_noise': 16.591236114501953, 'read_noise': 15.69178295135498}
+Instance # 13  dict:  {'system_noise': 4.8819580078125, 'amp': 13L, 'total_noise': 16.088945388793945, 'read_noise': 15.330384254455566}
+Instance # 14  dict:  {'system_noise': 5.107798099517822, 'amp': 14L, 'total_noise': 15.925286293029785, 'read_noise': 15.083935737609863}
+Instance # 15  dict:  {'system_noise': 5.199863910675049, 'amp': 15L, 'total_noise': 16.134620666503906, 'read_noise': 15.273748397827148}
+Instance # 16  dict:  {'system_noise': 5.44350004196167, 'amp': 16L, 'total_noise': 16.426881790161133, 'read_noise': 15.498734474182129}
+
+
+Keys in dict for component:  ITL-3800C-146
+hardware id:  48
+root activity id:  4614
+activity id:  4647
+Instance # 1  dict:  {'system_noise': 5.368650913238525, 'amp': 1L, 'total_noise': 11.138047218322754, 'read_noise': 9.758773803710938}
+Instance # 2  dict:  {'system_noise': 4.983371734619141, 'amp': 2L, 'total_noise': 11.748440742492676, 'read_noise': 10.639166831970215}
+Instance # 3  dict:  {'system_noise': 5.177572250366211, 'amp': 3L, 'total_noise': 14.40118408203125, 'read_noise': 13.438260078430176}
+Instance # 4  dict:  {'system_noise': 5.171641826629639, 'amp': 4L, 'total_noise': 13.377873420715332, 'read_noise': 12.337812423706055}
+Instance # 5  dict:  {'system_noise': 4.971937656402588, 'amp': 5L, 'total_noise': 13.058959007263184, 'read_noise': 12.075439453125}
+Instance # 6  dict:  {'system_noise': 4.919302940368652, 'amp': 6L, 'total_noise': 13.63128662109375, 'read_noise': 12.712687492370605}
+Instance # 7  dict:  {'system_noise': 4.6289520263671875, 'amp': 7L, 'total_noise': 10.742924690246582, 'read_noise': 9.69449520111084}
+Instance # 8  dict:  {'system_noise': 5.409665107727051, 'amp': 8L, 'total_noise': 13.003175735473633, 'read_noise': 11.824469566345215}
+Instance # 9  dict:  {'system_noise': 4.499101161956787, 'amp': 9L, 'total_noise': 14.200782775878906, 'read_noise': 13.469236373901367}
+Instance # 10  dict:  {'system_noise': 5.447058200836182, 'amp': 10L, 'total_noise': 14.258697509765625, 'read_noise': 13.177252769470215}
+Instance # 11  dict:  {'system_noise': 4.847413539886475, 'amp': 11L, 'total_noise': 12.72606372833252, 'read_noise': 11.766701698303223}
+Instance # 12  dict:  {'system_noise': 5.543179512023926, 'amp': 12L, 'total_noise': 11.571680068969727, 'read_noise': 10.157605171203613}
+Instance # 13  dict:  {'system_noise': 5.008699417114258, 'amp': 13L, 'total_noise': 11.962800025939941, 'read_noise': 10.863770484924316}
+Instance # 14  dict:  {'system_noise': 5.2994208335876465, 'amp': 14L, 'total_noise': 11.158158302307129, 'read_noise': 9.819400787353516}
+Instance # 15  dict:  {'system_noise': 5.402024745941162, 'amp': 15L, 'total_noise': 11.088765144348145, 'read_noise': 9.683947563171387}
+Instance # 16  dict:  {'system_noise': 5.585836887359619, 'amp': 16L, 'total_noise': 13.040677070617676, 'read_noise': 11.783788681030273}
+
+
+Keys in dict for component:  ITL-3800C-022
+hardware id:  52
+root activity id:  4799
+activity id:  5958
+Instance # 1  dict:  {'system_noise': 5.5753493309021, 'amp': 1L, 'total_noise': 15.600271224975586, 'read_noise': 14.569967269897461}
+Instance # 2  dict:  {'system_noise': 5.517581462860107, 'amp': 2L, 'total_noise': 20.9749755859375, 'read_noise': 20.236251831054688}
+Instance # 3  dict:  {'system_noise': 5.2513909339904785, 'amp': 3L, 'total_noise': 14.60543441772461, 'read_noise': 13.628705024719238}
+Instance # 4  dict:  {'system_noise': 5.195732593536377, 'amp': 4L, 'total_noise': 13.506181716918945, 'read_noise': 12.466808319091797}
+Instance # 5  dict:  {'system_noise': 5.004726409912109, 'amp': 5L, 'total_noise': 14.428074836730957, 'read_noise': 13.532259941101074}
+Instance # 6  dict:  {'system_noise': 4.909174919128418, 'amp': 6L, 'total_noise': 13.562009811401367, 'read_noise': 12.642314910888672}
+Instance # 7  dict:  {'system_noise': 4.665383338928223, 'amp': 7L, 'total_noise': 13.73486042022705, 'read_noise': 12.918227195739746}
+Instance # 8  dict:  {'system_noise': 5.3779778480529785, 'amp': 8L, 'total_noise': 11.611956596374512, 'read_noise': 10.291495323181152}
+Instance # 9  dict:  {'system_noise': 4.416670799255371, 'amp': 9L, 'total_noise': 9.82989501953125, 'read_noise': 8.781790733337402}
+Instance # 10  dict:  {'system_noise': 5.146121025085449, 'amp': 10L, 'total_noise': 11.396208763122559, 'read_noise': 10.168137550354004}
+Instance # 11  dict:  {'system_noise': 4.516295909881592, 'amp': 11L, 'total_noise': 12.388972282409668, 'read_noise': 11.53645133972168}
+Instance # 12  dict:  {'system_noise': 5.12988805770874, 'amp': 12L, 'total_noise': 12.868224143981934, 'read_noise': 11.801502227783203}
+Instance # 13  dict:  {'system_noise': 4.62212610244751, 'amp': 13L, 'total_noise': 11.722878456115723, 'read_noise': 10.773200035095215}
+Instance # 14  dict:  {'system_noise': 4.860546112060547, 'amp': 14L, 'total_noise': 13.124398231506348, 'read_noise': 12.191182136535645}
+Instance # 15  dict:  {'system_noise': 4.90328311920166, 'amp': 15L, 'total_noise': 12.953142166137695, 'read_noise': 11.989233016967773}
+Instance # 16  dict:  {'system_noise': 5.1671319007873535, 'amp': 16L, 'total_noise': 14.433088302612305, 'read_noise': 13.476452827453613}
+
+
+Keys in dict for component:  ITL-3800C-107
+hardware id:  4
+root activity id:  4504
+activity id:  4528
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 1L, 'total_noise': 10.078109741210938, 'read_noise': 10.078109741210938}
+Instance # 2  dict:  {'system_noise': 0.0, 'amp': 2L, 'total_noise': 9.80446720123291, 'read_noise': 9.80446720123291}
+Instance # 3  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 8.925758361816406, 'read_noise': 8.925758361816406}
+Instance # 4  dict:  {'system_noise': 0.0, 'amp': 4L, 'total_noise': 8.970183372497559, 'read_noise': 8.970183372497559}
+Instance # 5  dict:  {'system_noise': 0.0, 'amp': 5L, 'total_noise': 9.486343383789062, 'read_noise': 9.486343383789062}
+Instance # 6  dict:  {'system_noise': 0.0, 'amp': 6L, 'total_noise': 9.577557563781738, 'read_noise': 9.577557563781738}
+Instance # 7  dict:  {'system_noise': 0.0, 'amp': 7L, 'total_noise': 9.119501113891602, 'read_noise': 9.119501113891602}
+Instance # 8  dict:  {'system_noise': 0.0, 'amp': 8L, 'total_noise': 10.07748031616211, 'read_noise': 10.07748031616211}
+Instance # 9  dict:  {'system_noise': 0.0, 'amp': 9L, 'total_noise': 9.772261619567871, 'read_noise': 9.772261619567871}
+Instance # 10  dict:  {'system_noise': 0.0, 'amp': 10L, 'total_noise': 10.370024681091309, 'read_noise': 10.370024681091309}
+Instance # 11  dict:  {'system_noise': 0.0, 'amp': 11L, 'total_noise': 10.701367378234863, 'read_noise': 10.701367378234863}
+Instance # 12  dict:  {'system_noise': 0.0, 'amp': 12L, 'total_noise': 10.9266357421875, 'read_noise': 10.9266357421875}
+Instance # 13  dict:  {'system_noise': 0.0, 'amp': 13L, 'total_noise': 10.911667823791504, 'read_noise': 10.911667823791504}
+Instance # 14  dict:  {'system_noise': 0.0, 'amp': 14L, 'total_noise': 11.108940124511719, 'read_noise': 11.108940124511719}
+Instance # 15  dict:  {'system_noise': 0.0, 'amp': 15L, 'total_noise': 11.218515396118164, 'read_noise': 11.218515396118164}
+Instance # 16  dict:  {'system_noise': 0.0, 'amp': 16L, 'total_noise': 10.579991340637207, 'read_noise': 10.579991340637207}
+
+
+Keys in dict for component:  ITL-3800C-021
+hardware id:  8
+root activity id:  1267
+activity id:  1312
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 1L, 'total_noise': 8.458221435546875, 'read_noise': 8.458221435546875}
+Instance # 2  dict:  {'system_noise': 0.0, 'amp': 2L, 'total_noise': 8.485626220703125, 'read_noise': 8.485626220703125}
+Instance # 3  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 8.644700050354004, 'read_noise': 8.644700050354004}
+Instance # 4  dict:  {'system_noise': 0.0, 'amp': 4L, 'total_noise': 8.820476531982422, 'read_noise': 8.820476531982422}
+Instance # 5  dict:  {'system_noise': 0.0, 'amp': 5L, 'total_noise': 8.818696975708008, 'read_noise': 8.818696975708008}
+Instance # 6  dict:  {'system_noise': 0.0, 'amp': 6L, 'total_noise': 8.869318962097168, 'read_noise': 8.869318962097168}
+Instance # 7  dict:  {'system_noise': 0.0, 'amp': 7L, 'total_noise': 8.762816429138184, 'read_noise': 8.762816429138184}
+Instance # 8  dict:  {'system_noise': 0.0, 'amp': 8L, 'total_noise': 8.97074031829834, 'read_noise': 8.97074031829834}
+Instance # 9  dict:  {'system_noise': 0.0, 'amp': 9L, 'total_noise': 8.322080612182617, 'read_noise': 8.322080612182617}
+Instance # 10  dict:  {'system_noise': 0.0, 'amp': 10L, 'total_noise': 7.995399475097656, 'read_noise': 7.995399475097656}
+Instance # 11  dict:  {'system_noise': 0.0, 'amp': 11L, 'total_noise': 8.255326271057129, 'read_noise': 8.255326271057129}
+Instance # 12  dict:  {'system_noise': 0.0, 'amp': 12L, 'total_noise': 8.575069427490234, 'read_noise': 8.575069427490234}
+Instance # 13  dict:  {'system_noise': 0.0, 'amp': 13L, 'total_noise': 8.590948104858398, 'read_noise': 8.590948104858398}
+Instance # 14  dict:  {'system_noise': 0.0, 'amp': 14L, 'total_noise': 8.507205963134766, 'read_noise': 8.507205963134766}
+Instance # 15  dict:  {'system_noise': 0.0, 'amp': 15L, 'total_noise': 8.45926570892334, 'read_noise': 8.45926570892334}
+Instance # 16  dict:  {'system_noise': 0.0, 'amp': 16L, 'total_noise': 8.699146270751953, 'read_noise': 8.699146270751953}
+
+
+Keys in dict for component:  ITL-3800C-017
+hardware id:  51
+root activity id:  4570
+activity id:  4600
+Instance # 1  dict:  {'system_noise': 5.575268745422363, 'amp': 1L, 'total_noise': 15.872169494628906, 'read_noise': 14.860758781433105}
+Instance # 2  dict:  {'system_noise': 5.196142673492432, 'amp': 2L, 'total_noise': 15.861045837402344, 'read_noise': 14.985755920410156}
+Instance # 3  dict:  {'system_noise': 5.30635404586792, 'amp': 3L, 'total_noise': 15.922085762023926, 'read_noise': 15.011842727661133}
+Instance # 4  dict:  {'system_noise': 5.388348579406738, 'amp': 4L, 'total_noise': 15.953509330749512, 'read_noise': 15.015996932983398}
+Instance # 5  dict:  {'system_noise': 5.164422035217285, 'amp': 5L, 'total_noise': 16.08974266052246, 'read_noise': 15.238391876220703}
+Instance # 6  dict:  {'system_noise': 5.03632926940918, 'amp': 6L, 'total_noise': 15.694911003112793, 'read_noise': 14.864912033081055}
+Instance # 7  dict:  {'system_noise': 4.743441581726074, 'amp': 7L, 'total_noise': 14.990739822387695, 'read_noise': 14.220479965209961}
+Instance # 8  dict:  {'system_noise': 5.4200825691223145, 'amp': 8L, 'total_noise': 13.132888793945312, 'read_noise': 11.962251663208008}
+Instance # 9  dict:  {'system_noise': 4.431547164916992, 'amp': 9L, 'total_noise': 14.048698425292969, 'read_noise': 13.331440925598145}
+Instance # 10  dict:  {'system_noise': 5.147854328155518, 'amp': 10L, 'total_noise': 16.614255905151367, 'read_noise': 15.796615600585938}
+Instance # 11  dict:  {'system_noise': 4.53561544418335, 'amp': 11L, 'total_noise': 15.4902982711792, 'read_noise': 14.81139850616455}
+Instance # 12  dict:  {'system_noise': 5.169880390167236, 'amp': 12L, 'total_noise': 15.644628524780273, 'read_noise': 14.765727996826172}
+Instance # 13  dict:  {'system_noise': 4.862297534942627, 'amp': 13L, 'total_noise': 15.207785606384277, 'read_noise': 14.409538269042969}
+Instance # 14  dict:  {'system_noise': 5.10988712310791, 'amp': 14L, 'total_noise': 15.1222505569458, 'read_noise': 14.23276138305664}
+Instance # 15  dict:  {'system_noise': 5.131640911102295, 'amp': 15L, 'total_noise': 15.558021545410156, 'read_noise': 14.68735122680664}
+Instance # 16  dict:  {'system_noise': 5.283140182495117, 'amp': 16L, 'total_noise': 15.856169700622559, 'read_noise': 14.950135231018066}
+
+
+Keys in dict for component:  ITL-3800C-023
+hardware id:  13
+root activity id:  1030
+activity id:  1054
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 1L, 'total_noise': 8.131502151489258, 'read_noise': 8.131502151489258}
+Instance # 2  dict:  {'system_noise': 0.0, 'amp': 2L, 'total_noise': 4.64206075668335, 'read_noise': 4.64206075668335}
+Instance # 3  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 8.0600004196167, 'read_noise': 8.0600004196167}
+Instance # 4  dict:  {'system_noise': 0.0, 'amp': 4L, 'total_noise': 3.5590803623199463, 'read_noise': 3.5590803623199463}
+Instance # 5  dict:  {'system_noise': 0.0, 'amp': 5L, 'total_noise': 8.059134483337402, 'read_noise': 8.059134483337402}
+Instance # 6  dict:  {'system_noise': 0.0, 'amp': 6L, 'total_noise': 7.918981075286865, 'read_noise': 7.918981075286865}
+Instance # 7  dict:  {'system_noise': 0.0, 'amp': 7L, 'total_noise': 7.997498989105225, 'read_noise': 7.997498989105225}
+Instance # 8  dict:  {'system_noise': 0.0, 'amp': 8L, 'total_noise': 8.53929328918457, 'read_noise': 8.53929328918457}
+Instance # 9  dict:  {'system_noise': 0.0, 'amp': 9L, 'total_noise': 8.310805320739746, 'read_noise': 8.310805320739746}
+Instance # 10  dict:  {'system_noise': 0.0, 'amp': 10L, 'total_noise': 7.929797172546387, 'read_noise': 7.929797172546387}
+Instance # 11  dict:  {'system_noise': 0.0, 'amp': 11L, 'total_noise': 8.083855628967285, 'read_noise': 8.083855628967285}
+Instance # 12  dict:  {'system_noise': 0.0, 'amp': 12L, 'total_noise': 8.294183731079102, 'read_noise': 8.294183731079102}
+Instance # 13  dict:  {'system_noise': 0.0, 'amp': 13L, 'total_noise': 8.12299633026123, 'read_noise': 8.12299633026123}
+Instance # 14  dict:  {'system_noise': 0.0, 'amp': 14L, 'total_noise': 8.173195838928223, 'read_noise': 8.173195838928223}
+Instance # 15  dict:  {'system_noise': 0.0, 'amp': 15L, 'total_noise': 8.3265380859375, 'read_noise': 8.3265380859375}
+Instance # 16  dict:  {'system_noise': 0.0, 'amp': 16L, 'total_noise': 8.584602355957031, 'read_noise': 8.584602355957031}
+
+
+Keys in dict for component:  ITL-3800C-032
+hardware id:  12
+root activity id:  870
+activity id:  903
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 1L, 'total_noise': 8.161046028137207, 'read_noise': 8.161046028137207}
+Instance # 2  dict:  {'system_noise': 0.0, 'amp': 2L, 'total_noise': 7.746201038360596, 'read_noise': 7.746201038360596}
+Instance # 3  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 7.714358329772949, 'read_noise': 7.714358329772949}
+Instance # 4  dict:  {'system_noise': 0.0, 'amp': 4L, 'total_noise': 7.717082977294922, 'read_noise': 7.717082977294922}
+Instance # 5  dict:  {'system_noise': 0.0, 'amp': 5L, 'total_noise': 7.759086608886719, 'read_noise': 7.759086608886719}
+Instance # 6  dict:  {'system_noise': 0.0, 'amp': 6L, 'total_noise': 7.804728031158447, 'read_noise': 7.804728031158447}
+Instance # 7  dict:  {'system_noise': 0.0, 'amp': 7L, 'total_noise': 7.867970943450928, 'read_noise': 7.867970943450928}
+Instance # 8  dict:  {'system_noise': 0.0, 'amp': 8L, 'total_noise': 8.492390632629395, 'read_noise': 8.492390632629395}
+Instance # 9  dict:  {'system_noise': 0.0, 'amp': 9L, 'total_noise': 11.366859436035156, 'read_noise': 11.366859436035156}
+Instance # 10  dict:  {'system_noise': 0.0, 'amp': 10L, 'total_noise': 8.03246784210205, 'read_noise': 8.03246784210205}
+Instance # 11  dict:  {'system_noise': 0.0, 'amp': 11L, 'total_noise': 8.242341995239258, 'read_noise': 8.242341995239258}
+Instance # 12  dict:  {'system_noise': 0.0, 'amp': 12L, 'total_noise': 8.320671081542969, 'read_noise': 8.320671081542969}
+Instance # 13  dict:  {'system_noise': 0.0, 'amp': 13L, 'total_noise': 8.50877571105957, 'read_noise': 8.50877571105957}
+Instance # 14  dict:  {'system_noise': 0.0, 'amp': 14L, 'total_noise': 8.261368751525879, 'read_noise': 8.261368751525879}
+Instance # 15  dict:  {'system_noise': 0.0, 'amp': 15L, 'total_noise': 8.5368013381958, 'read_noise': 8.5368013381958}
+Instance # 16  dict:  {'system_noise': 0.0, 'amp': 16L, 'total_noise': 8.977105140686035, 'read_noise': 8.977105140686035}
