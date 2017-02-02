@@ -181,11 +181,18 @@ class getResults():
             expDict['hid'] = row['hid']
             expDict['aid'] = row['aid']
             expDict['raid'] = row['raid']
+            expDict['instances'] = []
         else : expDict = self.returnData[expSN]
-        if row['ressI'] not in expDict:
-            expDict[row['ressI']] = instanceDict = {}
-        else: instanceDict = expDict[row['ressI']]
-        instanceDict[row['resname']] = row['resvalue']
+        #if row['ressI'] not in expDict:
+        #    expDict[row['ressI']] = instanceDict = {}
+        instanceNumber = row['ressI']
+        # Note instance numbers always start with 1; list indices with 0
+        if instanceNumber > len(expDict['instances']) + 1:
+            raise RunTimeException,'Instances out of order'
+        elif instanceNumber == len(expDict['instances']) + 1:
+            expDict['instances'].append({})
+        #else: instanceDict = expDict[row['ressI']]
+        expDict['instances'][instanceNumber-1][row['resname']] = row['resvalue']
 
 if __name__ == "__main__":
     
@@ -208,10 +215,14 @@ if __name__ == "__main__":
         print "hardware id: ", returnData[lsstId]['hid']
         print "root activity id: ", returnData[lsstId]['raid']
         print "activity id: ", returnData[lsstId]['aid']
-        for k in expDict:
-            if isinstance(k, int) or isinstance(k, long):
-                print "Key: ", k, " Value: ", expDict[k]
-
+        #for k in expDict:
+        #    if isinstance(k, int) or isinstance(k, long):
+        #        print "Key: ", k, " Value: ", expDict[k]
+        nInstance = len(returnData[lsstId]['instances'])
+        i = 1
+        for d in returnData[lsstId]['instances']:
+            print "Instance #", i, " dict: ", d 
+            i += 1
     #print "Instance 1 key-value pairs:"
     #instanceDict = returnData['ITL-3800C-021'][1]
     #for k in instanceDict:
