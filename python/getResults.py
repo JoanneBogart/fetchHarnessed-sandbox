@@ -119,7 +119,7 @@ class getResults():
             
         genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where {abbr}.schemaName='"
         genQuery += self.schemaName
-        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI,resname"
+        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname"
         floatQuery = genQuery.format(abbr='FRH', 
                                      resultsTable='FloatResultHarnessed')
         intQuery = genQuery.format(abbr='IRH', 
@@ -194,24 +194,25 @@ if __name__ == "__main__":
     htype = 'ITL-CCD'
     travelerName = 'SR-EOT-1'
 
-    title = valueName + '-' + travelerName + '-' + htype
+    #title = valueName + '-' + travelerName + '-' + htype
 
-    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
-
-    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName,  model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
+    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
+    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
 
     engine = eT.connectDB()
 
     returnData  = eT.getResultsJH(engine)
-    print "keys in expDict: "
-    expDict = returnData['ITL-3800C-021']
-    for k in expDict:
-        print "Key: ", k, " Value: ", expDict[k]
-    print "hid: ", returnData['ITL-3800C-021']['hid']
-    print "raid: ", returnData['ITL-3800C-021']['raid']
-    print "aid: ", returnData['ITL-3800C-021']['aid']
-    print "Instance 1 key-value pairs:"
-    instanceDict = returnData['ITL-3800C-021'][1]
+    for lsstId in returnData:
+        print "\n\nKeys in dict for component: ",lsstId 
+        expDict = returnData[lsstId]
+        print "hardware id: ", returnData[lsstId]['hid']
+        print "root activity id: ", returnData[lsstId]['raid']
+        print "activity id: ", returnData[lsstId]['aid']
+        for k in expDict:
+            if isinstance(k, int) or isinstance(k, long):
+                print "Key: ", k, " Value: ", expDict[k]
 
-    for k in instanceDict:
-        print "Key: ", k, " Value: ", instanceDict[k]
+    #print "Instance 1 key-value pairs:"
+    #instanceDict = returnData['ITL-3800C-021'][1]
+    #for k in instanceDict:
+    #    print "Key: ", k, " Value: ", instanceDict[k]
