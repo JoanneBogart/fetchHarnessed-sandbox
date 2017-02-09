@@ -7,8 +7,8 @@ class getResults():
 
     def __init__(self, htype=None, model=None, experimentSN=None, 
                  hardwareLabel=None, travelerName=None, stepName=None, 
-                 schemaName=None, valueName=None, sortBy=None, 
-                 sortByType='int', runLabel=None, stepStatus='success', 
+                 schemaName=None, itemFilter=None, valueName=None,
+                 runLabel=None, stepStatus='success', 
                  travelerStatus=None,dbConnectFile='db_connect.txt'):
         self.htype = htype
         self.model = model
@@ -17,17 +17,16 @@ class getResults():
         self.travelerName = travelerName
         self.schemaName = schemaName
         self.valueName = valueName
-        self.sortBy = sortBy
-        self.sortByType = sortByType
         self.runLabel = runLabel
+        self.itemFilter = itemFilter
         self.stepStatus = stepStatus
         self.travelerStatus = travelerStatus
         self.dbConnectFile = dbConnectFile
 
     def setParams(self, htype=None, model=None, experimentSN=None, 
                  hardwareLabel=None, travelerName=None, stepName=None, 
-                 schemaName=None, valueName=None, sortBy=None, 
-                 sortByType=None, runLabel=None, stepStatus=None, 
+                 schemaName=None, itemFilter=None, valueName=None, 
+                  runLabel=None, stepStatus=None, 
                  travelerStatus=None,dbConnectFile=None):
         if htype is not None: self.htype = htype
         if model is not None: self.model = model
@@ -36,9 +35,8 @@ class getResults():
         if travelerName is not None: self.travelerName = travelerName
         if schemaName is not None: self.schemaName = schemaName
         if valueName is not None: self.valueName = valueName
-        if sortBy is not None: self.sortBy = sortBy
-        if sortByType is not None: self.sortByType = sortByType
         if runLabel is not None: self.runLabel = runLabel
+        if itemFilter is not None: self.itemFilter = itemFilter
         if stepStatus is not None: self.stepStatus = stepStatus
         if travelerStatus is not None: self.travelerStatus = travelerStatus
         if dbConnectFile is not None: self.dbConnectFile = dbConnectFile
@@ -127,10 +125,6 @@ class getResults():
         stringQuery = genQuery.format(abbr='SRH', 
                                       resultsTable='StringResultHarnessed')
 
-        #rquery = "select FRH.name as FRHname,FRH.value as FRHvalue,FRH.schemaInstance as FRHsI,A.id as aid,A.hardwareId as hid,ASH.activityStatusId as actStatus from FloatResultHarnessed FRH join Activity A on FRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where FRH.schemaName='"
-        #rquery += self.schemaName
-        #rquery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, FRHsI,FRHname"
-
         print "Monster float query:\n"
         print floatQuery
         print "Monster int query:\n"
@@ -166,6 +160,9 @@ class getResults():
           expSN = hardwareDict[row['hid']]
           self.storeData(expSN, row)
 
+        if self.itemFilter is not None:
+            self.prune( )
+
         return self.returnData
 
     def verifyParameters(self):
@@ -187,12 +184,17 @@ class getResults():
         #    expDict[row['ressI']] = instanceDict = {}
         instanceNumber = row['ressI']
         # Note instance numbers always start with 1; list indices with 0
+
         if instanceNumber > len(expDict['instances']) + 1:
             raise RunTimeException,'Instances out of order'
         elif instanceNumber == len(expDict['instances']) + 1:
             expDict['instances'].append({})
-        #else: instanceDict = expDict[row['ressI']]
+            expDict['instances'][instanceNumber-1]['instanceNumber'] = instanceNumber
+
         expDict['instances'][instanceNumber-1][row['resname']] = row['resvalue']
+
+    def prune(self):
+        if self.itemFilter is None: return
 
 if __name__ == "__main__":
     
