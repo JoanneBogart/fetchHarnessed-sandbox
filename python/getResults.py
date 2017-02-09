@@ -170,6 +170,16 @@ class getResults():
             raise KeyError,'Missing value for "htype"'
         if self.schemaName is None:
             raise KeyError, 'Missing value for "schemaName"'
+        if self.itemFilter is not None:
+            # Must be tuple of length 2, each item a string
+            if not isinstance(self.itemFilter, tuple):
+                raise KeyError, 'itemFilter must be tuple'
+            if not len(self.itemFilter) == 2:
+                raise KeyError, 'itemFilter must be tuple of length 2'
+            if not isinstance(self.itemFilter[0], str): 
+                raise KeyError, 'itemFilter key must be a string'
+            if isinstance(self.itemFilter[1], str) or isinstance(self.itemFilter[1], int) or isinstance(self.itemFilter[1], long): return
+            raise KeyError, 'itemFilter value must be integer or string'
 
     # Store a single value, creating containing dicts as needed
     def storeData(self, expSN, row):
@@ -206,7 +216,7 @@ if __name__ == "__main__":
     #title = valueName + '-' + travelerName + '-' + htype
 
     #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
-    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
+    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3.2) )
 
     engine = eT.connectDB()
 
