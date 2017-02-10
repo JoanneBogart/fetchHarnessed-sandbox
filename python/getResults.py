@@ -143,7 +143,7 @@ class getResults():
           #, " Act status: ", row['actStatus']
 
           expSN = hardwareDict[row['hid']]
-          self.storeData(expSN, row)
+          self.storeData(expSN, row, 'float')
 
         iresult = engine.execute(intQuery)
 
@@ -151,14 +151,14 @@ class getResults():
           rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
           #print rowout.format(abbr="IRH")
           expSN = hardwareDict[row['hid']]
-          self.storeData(expSN, row)
+          self.storeData(expSN, row, 'int')
 
         sresult = engine.execute(stringQuery)
         for row in sresult:
           rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
           #print rowout.format(abbr="SRH")
           expSN = hardwareDict[row['hid']]
-          self.storeData(expSN, row)
+          self.storeData(expSN, row, 'str')
 
         if self.itemFilter is not None:
             self.prune( )
@@ -182,26 +182,33 @@ class getResults():
             raise KeyError, 'itemFilter value must be integer or string'
 
     # Store a single value, creating containing dicts as needed
-    def storeData(self, expSN, row):
+    def storeData(self, expSN, row, dtype):
         if expSN not in self.returnData:
             self.returnData[expSN] = expDict = {}
             expDict['hid'] = row['hid']
             expDict['aid'] = row['aid']
             expDict['raid'] = row['raid']
-            expDict['instances'] = []
+
+            #  First instance record will be used for type information
+            expDict['instances'] = [{'instanceNumber' : 0}]
         else : expDict = self.returnData[expSN]
-        #if row['ressI'] not in expDict:
-        #    expDict[row['ressI']] = instanceDict = {}
+
         instanceNumber = row['ressI']
         # Note instance numbers always start with 1; list indices with 0
 
-        if instanceNumber > len(expDict['instances']) + 1:
-            raise RunTimeException,'Instances out of order'
-        elif instanceNumber == len(expDict['instances']) + 1:
-            expDict['instances'].append({})
-            expDict['instances'][instanceNumber-1]['instanceNumber'] = instanceNumber
+        # Make our instance record if it doesn't already exist
+        myInstance = None
+        for i in expDict['instances']:
+            if i['instanceNumber'] == instanceNumber:
+                myInstance = i
+                break
+        if myInstance == None:
+            myInstance = {'instanceNumber' : instanceNumber}
+            expDict['instances'].append(myInstance)
 
-        expDict['instances'][instanceNumber-1][row['resname']] = row['resvalue']
+        if row['resname'] not in expDict['instances'][0].keys():
+            expDict['instances'][0][row['resname']] = dtype
+        myInstance[row['resname']] = row['resvalue']
 
     def prune(self):
         if self.itemFilter is None: return
@@ -213,10 +220,8 @@ if __name__ == "__main__":
     htype = 'ITL-CCD'
     travelerName = 'SR-EOT-1'
 
-    #title = valueName + '-' + travelerName + '-' + htype
-
-    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt')
-    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3.2) )
+    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
+    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3) )
 
     engine = eT.connectDB()
 
@@ -227,15 +232,10 @@ if __name__ == "__main__":
         print "hardware id: ", returnData[lsstId]['hid']
         print "root activity id: ", returnData[lsstId]['raid']
         print "activity id: ", returnData[lsstId]['aid']
-        #for k in expDict:
-        #    if isinstance(k, int) or isinstance(k, long):
-        #        print "Key: ", k, " Value: ", expDict[k]
+
         nInstance = len(returnData[lsstId]['instances'])
-        i = 1
+        i = 0
         for d in returnData[lsstId]['instances']:
             print "Instance #", i, " dict: ", d 
             i += 1
-    #print "Instance 1 key-value pairs:"
-    #instanceDict = returnData['ITL-3800C-021'][1]
-    #for k in instanceDict:
-    #    print "Key: ", k, " Value: ", instanceDict[k]
+
