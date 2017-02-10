@@ -212,6 +212,16 @@ class getResults():
 
     def prune(self):
         if self.itemFilter is None: return
+        key = self.itemFilter[0]
+        val = self.itemFilter[1]
+        for expSN in self.returnData:
+            expDict = self.returnData[expSN]
+            if key not in expDict['instances'][0].keys(): return
+            ix = len(expDict['instances']) - 1
+            while ix > 0:
+                if expDict['instances'][ix][key] != val:
+                    del expDict['instances'][ix]
+                ix -= 1
 
 if __name__ == "__main__":
     
@@ -220,8 +230,8 @@ if __name__ == "__main__":
     htype = 'ITL-CCD'
     travelerName = 'SR-EOT-1'
 
-    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
-    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3) )
+    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
+    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3) )
 
     engine = eT.connectDB()
 
