@@ -190,20 +190,20 @@ class getResults():
             expDict['raid'] = row['raid']
 
             #  First instance record will be used for type information
-            expDict['instances'] = [{'instanceNumber' : 0}]
+            expDict['instances'] = [{'schemaInstance' : 0}]
         else : expDict = self.returnData[expSN]
 
-        instanceNumber = row['ressI']
+        schemaInstance = row['ressI']
         # Note instance numbers always start with 1; list indices with 0
 
         # Make our instance record if it doesn't already exist
         myInstance = None
         for i in expDict['instances']:
-            if i['instanceNumber'] == instanceNumber:
+            if i['schemaInstance'] == schemaInstance:
                 myInstance = i
                 break
         if myInstance == None:
-            myInstance = {'instanceNumber' : instanceNumber}
+            myInstance = {'schemaInstance' : schemaInstance}
             expDict['instances'].append(myInstance)
 
         if row['resname'] not in expDict['instances'][0].keys():

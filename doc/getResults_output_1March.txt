@@ -1,0 +1,189 @@
+connected to host mysql-node03.slac.stanford.edu
+hardware query is: 
+
+select H2.id as hid2 from Hardware H2 join HardwareType HT on H2.hardwareTypeId=HT.id where HT.name='ITL-CCD'and H2.model='3800C' 
+
+Query to find traveler root ids of interest
+
+select A.id as Aid, H.id as Hid, H.lsstId as expSN from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id where H.id in (select H2.id as hid2 from Hardware H2 join HardwareType HT on H2.hardwareTypeId=HT.id where HT.name='ITL-CCD'and H2.model='3800C') and A.id=A.rootActivityId and P.name='SR-EOT-1' order by H.id asc, A.id desc 
+
+hid= 3  rootId= 1110
+hid= 3  rootId= 1099
+hid= 4  rootId= 4504
+hid= 4  rootId= 4268
+hid= 4  rootId= 4229
+hid= 4  rootId= 1216
+hid= 4  rootId= 1178
+hid= 4  rootId= 1167
+hid= 7  rootId= 1086
+hid= 8  rootId= 1267
+hid= 8  rootId= 1266
+hid= 8  rootId= 1265
+hid= 8  rootId= 1264
+hid= 8  rootId= 968
+hid= 8  rootId= 924
+hid= 8  rootId= 773
+hid= 9  rootId= 937
+hid= 10  rootId= 939
+hid= 10  rootId= 754
+hid= 11  rootId= 1156
+hid= 12  rootId= 870
+hid= 12  rootId= 813
+hid= 13  rootId= 1030
+hid= 13  rootId= 938
+hid= 15  rootId= 3272
+hid= 15  rootId= 3138
+hid= 15  rootId= 2911
+hid= 15  rootId= 2908
+hid= 15  rootId= 2903
+hid= 17  rootId= 3700
+hid= 17  rootId= 3627
+hid= 17  rootId= 3604
+hid= 17  rootId= 3592
+hid= 18  rootId= 3759
+hid= 18  rootId= 3493
+hid= 18  rootId= 3448
+hid= 18  rootId= 3363
+hid= 18  rootId= 2880
+hid= 18  rootId= 2843
+hid= 18  rootId= 2790
+hid= 18  rootId= 2771
+hid= 19  rootId= 3827
+hid= 19  rootId= 3816
+hid= 19  rootId= 3805
+hid= 38  rootId= 6029
+hid= 48  rootId= 4614
+hid= 49  rootId= 5977
+hid= 50  rootId= 4691
+hid= 50  rootId= 4680
+hid= 50  rootId= 4660
+hid= 51  rootId= 4570
+hid= 52  rootId= 4799
+hid= 63  rootId= 9638
+hid= 63  rootId= 9513
+hid= 63  rootId= 9471
+hid= 63  rootId= 9419
+hid= 63  rootId= 9235
+raiString:  ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') 
+
+Monster float query:
+
+select FRH.name as resname,FRH.value as resvalue,FRH.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from FloatResultHarnessed FRH join Activity A on FRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where FRH.schemaName='read_noise' and A.rootActivityId in ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname
+Monster int query:
+
+select IRH.name as resname,IRH.value as resvalue,IRH.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from IntResultHarnessed IRH join Activity A on IRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where IRH.schemaName='read_noise' and A.rootActivityId in ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname
+Monster string query:
+
+select SRH.name as resname,SRH.value as resvalue,SRH.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from StringResultHarnessed SRH join Activity A on SRH.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where SRH.schemaName='read_noise' and A.rootActivityId in ('1110','1099','4504','4268','4229','1216','1178','1167','1086','1267','1266','1265','1264','968','924','773','937','939','754','1156','870','813','1030','938','3272','3138','2911','2908','2903','3700','3627','3604','3592','3759','3493','3448','3363','2880','2843','2790','2771','3827','3816','3805','6029','4614','5977','4691','4680','4660','4570','4799','9638','9513','9471','9419','9235') and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname
+
+
+Keys in dict for component:  ITL-3800C-091
+hardware id:  18
+root activity id:  3759
+activity id:  3783
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 5.901809215545654, 'amp': 3L, 'total_noise': 13.263104438781738, 'read_noise': 11.877650260925293, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-097
+hardware id:  17
+root activity id:  3700
+activity id:  3726
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 5.586465358734131, 'amp': 3L, 'total_noise': 11.962200164794922, 'read_noise': 10.577600479125977, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-102
+hardware id:  38
+root activity id:  6029
+activity id:  6322
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 5.835563659667969, 'amp': 3L, 'total_noise': 12.048166275024414, 'read_noise': 10.54061222076416, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-042
+hardware id:  3
+root activity id:  1110
+activity id:  1135
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 7.045011520385742, 'read_noise': 7.045011520385742, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-098
+hardware id:  15
+root activity id:  3272
+activity id:  3332
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 4.537178039550781, 'amp': 3L, 'total_noise': 12.669042587280273, 'read_noise': 11.82872200012207, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-034
+hardware id:  63
+root activity id:  9638
+activity id:  9694
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 3.7450203895568848, 'amp': 3L, 'total_noise': 7.047269821166992, 'read_noise': 5.969827175140381, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-145
+hardware id:  49
+root activity id:  5977
+activity id:  6009
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 5.591034889221191, 'amp': 3L, 'total_noise': 14.305997848510742, 'read_noise': 13.16821575164795, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-146
+hardware id:  48
+root activity id:  4614
+activity id:  4647
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 5.177572250366211, 'amp': 3L, 'total_noise': 14.40118408203125, 'read_noise': 13.438260078430176, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-022
+hardware id:  52
+root activity id:  4799
+activity id:  5958
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 5.2513909339904785, 'amp': 3L, 'total_noise': 14.60543441772461, 'read_noise': 13.628705024719238, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-107
+hardware id:  4
+root activity id:  4504
+activity id:  4528
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 8.925758361816406, 'read_noise': 8.925758361816406, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-021
+hardware id:  8
+root activity id:  1267
+activity id:  1312
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 8.644700050354004, 'read_noise': 8.644700050354004, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-017
+hardware id:  51
+root activity id:  4570
+activity id:  4600
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 5.30635404586792, 'amp': 3L, 'total_noise': 15.922085762023926, 'read_noise': 15.011842727661133, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-023
+hardware id:  13
+root activity id:  1030
+activity id:  1054
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 8.0600004196167, 'read_noise': 8.0600004196167, 'schemaInstance': 3L}
+
+
+Keys in dict for component:  ITL-3800C-032
+hardware id:  12
+root activity id:  870
+activity id:  903
+Instance # 0  dict:  {'system_noise': 'float', 'amp': 'int', 'total_noise': 'float', 'read_noise': 'float', 'schemaInstance': 0}
+Instance # 1  dict:  {'system_noise': 0.0, 'amp': 3L, 'total_noise': 7.714358329772949, 'read_noise': 7.714358329772949, 'schemaInstance': 3L}
