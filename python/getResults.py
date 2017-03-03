@@ -50,8 +50,22 @@ class getResults():
         #     else ever make sense?
         #     stepName doesn't buy us much; might not implement ever
 
+    # Clear everything except connect file parameter
+    def clearParams(self) :
+        self.htype = None
+        self.model = None
+        self.experimentSN = None
+        self.hardwareLabel = None
+        self.travelerName = None
+        self.schemaName = None
+        self.runLabel = None
+        self.itemFilter = None
+        self.stepStatus = None
+        self.travelerStatus = None
+
     def connectDB(self):
 
+        print 'dbConnect file is ', self.dbConnectFile
         kwds = {}
         try:
             with open(self.dbConnectFile) as f:
@@ -67,9 +81,6 @@ class getResults():
         mysql_connection = engine.raw_connection()
 
         print 'connected to host' , kwds['host']
-
-        # Appears not to be used for anything
-        #cursor = mysql_connection.cursor()
 
         return engine
 
@@ -107,6 +118,9 @@ class getResults():
             print "hid=",row['Hid']," rootId=",row['Aid']
             raiList.append(str(row['Aid']))
             hardwareDict[row['Hid']] = row['expSN']
+
+        result.close()
+
         if len(raiList) == 0:
             print "No results meeting criteria"
             exit(0)
@@ -145,6 +159,8 @@ class getResults():
           expSN = hardwareDict[row['hid']]
           self.storeData(expSN, row, 'float')
 
+        fresult.close()
+
         iresult = engine.execute(intQuery)
 
         for row in iresult:
@@ -152,6 +168,7 @@ class getResults():
           #print rowout.format(abbr="IRH")
           expSN = hardwareDict[row['hid']]
           self.storeData(expSN, row, 'int')
+        iresult.close()
 
         sresult = engine.execute(stringQuery)
         for row in sresult:
@@ -159,6 +176,8 @@ class getResults():
           #print rowout.format(abbr="SRH")
           expSN = hardwareDict[row['hid']]
           self.storeData(expSN, row, 'str')
+
+        sresult.close()
 
         if self.itemFilter is not None:
             self.prune( )
@@ -171,15 +190,18 @@ class getResults():
         if self.schemaName is None:
             raise KeyError, 'Missing value for "schemaName"'
         if self.itemFilter is not None:
-            # Must be tuple of length 2, each item a string
-            if not isinstance(self.itemFilter, tuple):
-                raise KeyError, 'itemFilter must be tuple'
-            if not len(self.itemFilter) == 2:
-                raise KeyError, 'itemFilter must be tuple of length 2'
-            if not isinstance(self.itemFilter[0], str): 
-                raise KeyError, 'itemFilter key must be a string'
-            if isinstance(self.itemFilter[1], str) or isinstance(self.itemFilter[1], int) or isinstance(self.itemFilter[1], long): return
-            raise KeyError, 'itemFilter value must be integer or string'
+            self.parseItemFilter()
+
+    def parseItemFilter(self):
+        # Must be tuple of length 2, each item a string
+        if not isinstance(self.itemFilter, tuple):
+            raise KeyError, 'itemFilter must be tuple'
+        if not len(self.itemFilter) == 2:
+            raise KeyError, 'itemFilter must be tuple of length 2'
+        if not isinstance(self.itemFilter[0], str): 
+            raise KeyError, 'itemFilter key must be a string'
+        if isinstance(self.itemFilter[1], str) or isinstance(self.itemFilter[1], int) or isinstance(self.itemFilter[1], long): return
+        raise KeyError, 'itemFilter value must be integer or string'
 
     # Store a single value, creating containing dicts as needed
     def storeData(self, expSN, row, dtype):
@@ -210,6 +232,25 @@ class getResults():
             expDict['instances'][0][row['resname']] = dtype
         myInstance[row['resname']] = row['resvalue']
 
+    # For now, just have one list of instances
+    # When we handle multiple schemas in one request it will be different
+    def storeRunData(self, row, dtype):
+        schemaInstance = row['ressI']
+        myInstance = None
+        for i in self.returnData['instances']:
+            if i['schemaInstance'] == schemaInstance:
+                myInstance = i
+                break
+        if myInstance == None:
+            myInstance = {'schemaInstance' : schemaInstance, 
+                          'processName' : row['pname']}
+            self.returnData['instances'].append(myInstance)
+
+        if row['resname'] not in self.returnData['instances'][0].keys():
+            self.returnData['instances'][0][row['resname']] = dtype
+        myInstance[row['resname']] = row['resvalue']
+
+
     def prune(self):
         if self.itemFilter is None: return
         key = self.itemFilter[0]
@@ -223,6 +264,72 @@ class getResults():
                     del expDict['instances'][ix]
                 ix -= 1
 
+
+    def getRunResults(self, engine, run, schemaName=None, filter=None):
+        if schemaName == None:
+            print "Schema name required for this version of getRunResults"
+            print "Have a nice day"
+        
+        self.schemaName = schemaName
+
+        try:
+            intRun = int(run)
+        except ValueError:
+            try:
+                intRun = int(run[:-1])
+            except ValueError:
+                raise
+
+        self.intRun = intRun
+        if (filter != None):
+            self.parseItemFilter()
+
+        sqlString = "select RunNumber.rootActivityId as rai, Activity.hardwareId as hid, Hardware.lsstId as expSN, HardwareType.name as hname from RunNumber join Activity on RunNumber.rootActivityId=Activity.id join Hardware on Activity.hardwareId=Hardware.id join HardwareType on HardwareType.id=Hardware.hardwareTypeId where runInt='" + str(intRun) + "'";
+
+        result = engine.execute(sqlString)
+        for row in result:      # can only be one
+            self.htype = row['hname']
+            self.experimentSN = row['expSN']
+            self.oneRai = row['rai']
+            self.oneHid = row['hid']
+
+        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,Process.name as pname,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId join Process on Process.id=A.processId where {abbr}.schemaName='"
+        genQuery += self.schemaName
+        genQuery += "' and A.rootActivityId='" + str(self.oneRai) + "' and ASH.activityStatusId='1' order by  A.id, ressI asc, resname"
+        floatQuery = genQuery.format(abbr='FRH', 
+                                     resultsTable='FloatResultHarnessed')
+        intQuery = genQuery.format(abbr='IRH', 
+                                   resultsTable='IntResultHarnessed')
+        stringQuery = genQuery.format(abbr='SRH', 
+                                      resultsTable='StringResultHarnessed')
+
+
+        self.returnData = {'run' : intRun, 'raid' : self.oneRai,
+                           'schema' : self.schemaName,
+                           'experimentSN' : self.experimentSN, 
+                           'hid' : self.oneHid,
+                           'instances' : [{'schemaInstance' : 0}] }
+
+        fresult = engine.execute(floatQuery)
+        for row in fresult:
+            self.storeRunData(row, 'float')
+        fresult.close()
+
+        iresult = engine.execute(intQuery)
+        for row in iresult:
+            self.storeRunData(row, 'int')
+        iresult.close()
+
+        sresult = engine.execute(stringQuery)
+        for row in sresult:
+            self.storeRunData(row, 'string')
+        sresult.close()
+
+        if self.itemFilter is not None:
+            self.prune()
+
+        return self.returnData
+        
 if __name__ == "__main__":
     
     schemaName = 'read_noise'
@@ -230,8 +337,8 @@ if __name__ == "__main__":
     htype = 'ITL-CCD'
     travelerName = 'SR-EOT-1'
 
-    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
-    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3) )
+    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
+    #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3) )
 
     engine = eT.connectDB()
 
@@ -248,4 +355,19 @@ if __name__ == "__main__":
         for d in returnData[lsstId]['instances']:
             print "Instance #", i, " dict: ", d 
             i += 1
+
+    eT.clearParams()
+
+    runData = eT.getRunResults(engine, 96, 'read_noise')
+
+    for k in runData:
+        print k
+
+    i = 0
+    for d in runData['instances']:
+        print "Data for instance #", i, " dict: "
+        print d
+        i += 1
+
+
 
