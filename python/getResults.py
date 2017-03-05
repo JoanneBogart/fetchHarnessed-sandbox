@@ -3,6 +3,17 @@ import collections
 import operator
 import string
 
+# Prune list of dicts.  If key is in the dict and value is not
+# equal to supplied value, discard
+def pruneInstances(k, v, instances):
+    if k not in instances[0].keys(): return
+    ix = len(instances) - 1
+    while ix > 0:
+        if instances[ix][k] != v:
+            del instances[ix]
+        ix -= 1
+    return
+
 class getResults():
 
     def __init__(self, htype=None, model=None, experimentSN=None, 
@@ -100,15 +111,15 @@ class getResults():
         # To support hardware label arg, add extra condition to where clause
         # but not for this first attempt
 
-        print "hardware query is: \n"
-        print hidQuery, "\n"
+        #print "hardware query is: \n"
+        #print hidQuery, "\n"
 
         # Retrieve list of all rootActivityId's which may be relevant
         # (correct process name; run on a component we care about)
         rootsQuery = "select A.id as Aid, H.id as Hid, H.lsstId as expSN from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id where H.id in (" + hidQuery + ") and A.id=A.rootActivityId and P.name='" + self.travelerName + "' order by H.id asc, A.id desc"
 
-        print "Query to find traveler root ids of interest\n"
-        print rootsQuery, "\n"
+        #print "Query to find traveler root ids of interest\n"
+        #print rootsQuery, "\n"
         result = engine.execute(rootsQuery)
 
         # Make dict associating Hid and expSN and list of root id's of interest
@@ -127,7 +138,7 @@ class getResults():
         
         # Form list of interesting rootId's
         raiString = "('" + string.join(raiList, "','") + "')"
-        print "raiString: ", raiString, "\n"
+        #print "raiString: ", raiString, "\n"
             
         genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where {abbr}.schemaName='"
         genQuery += self.schemaName
@@ -139,12 +150,12 @@ class getResults():
         stringQuery = genQuery.format(abbr='SRH', 
                                       resultsTable='StringResultHarnessed')
 
-        print "Monster float query:\n"
-        print floatQuery
-        print "Monster int query:\n"
-        print intQuery
-        print "Monster string query:\n"
-        print stringQuery
+        #print "Monster float query:\n"
+        #print floatQuery
+        #print "Monster int query:\n"
+        #print intQuery
+        #print "Monster string query:\n"
+        #print stringQuery
 
         self.returnData = {}
 
@@ -264,13 +275,13 @@ class getResults():
                     del expDict['instances'][ix]
                 ix -= 1
 
-
-    def getRunResults(self, engine, run, schemaName=None, filter=None):
+    def getRunResults(self, engine, run, schemaName=None, itemFilter=None):
         if schemaName == None:
             print "Schema name required for this version of getRunResults"
             print "Have a nice day"
         
         self.schemaName = schemaName
+        self.itemFilter = itemFilter
 
         try:
             intRun = int(run)
@@ -281,7 +292,7 @@ class getResults():
                 raise
 
         self.intRun = intRun
-        if (filter != None):
+        if (itemFilter != None):
             self.parseItemFilter()
 
         sqlString = "select RunNumber.rootActivityId as rai, Activity.hardwareId as hid, Hardware.lsstId as expSN, HardwareType.name as hname from RunNumber join Activity on RunNumber.rootActivityId=Activity.id join Hardware on Activity.hardwareId=Hardware.id join HardwareType on HardwareType.id=Hardware.hardwareTypeId where runInt='" + str(intRun) + "'";
@@ -326,7 +337,9 @@ class getResults():
         sresult.close()
 
         if self.itemFilter is not None:
-            self.prune()
+            pruneInstances(self.itemFilter[0], self.itemFilter[1],
+                           self.returnData['instances'])
+         
 
         return self.returnData
         
@@ -369,5 +382,14 @@ if __name__ == "__main__":
         print d
         i += 1
 
+    #Now do it again with a filter
+    runData = eT.getRunResults(engine, 96, 'read_noise', itemFilter=('amp', 5))
 
+    for k in runData:
+        print k
 
+    i = 0
+    for d in runData['instances']:
+        print "Data for instance #", i, " dict: "
+        print d
+        i += 1
