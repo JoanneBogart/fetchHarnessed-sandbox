@@ -16,53 +16,13 @@ def pruneInstances(k, v, instances):
 
 class getResults():
 
-    def __init__(self, htype=None, model=None, experimentSN=None, 
-                 hardwareLabel=None, travelerName=None, stepName=None, 
-                 schemaName=None, itemFilter=None, valueName=None,
-                 runLabel=None, stepStatus='success', 
-                 travelerStatus=None,dbConnectFile='db_connect.txt'):
-        self.htype = htype
-        self.model = model
-        self.experimentSN = experimentSN
-        self.hardwareLabel = hardwareLabel
-        self.travelerName = travelerName
-        self.schemaName = schemaName
-        self.valueName = valueName
-        self.runLabel = runLabel
-        self.itemFilter = itemFilter
-        self.stepStatus = stepStatus
-        self.travelerStatus = travelerStatus
+    def __init__(self, dbConnectFile='db_connect.txt'):
+        self.engine = None
         self.dbConnectFile = dbConnectFile
 
-    def setParams(self, htype=None, model=None, experimentSN=None, 
-                 hardwareLabel=None, travelerName=None, stepName=None, 
-                 schemaName=None, itemFilter=None, valueName=None, 
-                  runLabel=None, stepStatus=None, 
-                 travelerStatus=None,dbConnectFile=None):
-        if htype is not None: self.htype = htype
-        if model is not None: self.model = model
-        if experimentSN is not None: self.experimentSN = experimentSN
-        if hardwareLabel is not None: self.hardwareLabel = hardwareLabel
-        if travelerName is not None: self.travelerName = travelerName
-        if schemaName is not None: self.schemaName = schemaName
-        if valueName is not None: self.valueName = valueName
-        if runLabel is not None: self.runLabel = runLabel
-        if itemFilter is not None: self.itemFilter = itemFilter
-        if stepStatus is not None: self.stepStatus = stepStatus
-        if travelerStatus is not None: self.travelerStatus = travelerStatus
-        if dbConnectFile is not None: self.dbConnectFile = dbConnectFile
-
-        # NOTE:  For first attempt, only use
-        #     htype, dbConnectFile, schemaName
-        #     travelerName if present
-        #     and, if present, model and experimentSN
-        #
-        #     stepStatus has default value of 'success'. Does anything
-        #     else ever make sense?
-        #     stepName doesn't buy us much; might not implement ever
 
     # Clear everything except connect file parameter
-    def clearParams(self) :
+    def _clearParams(self) :
         self.htype = None
         self.model = None
         self.experimentSN = None
@@ -71,11 +31,9 @@ class getResults():
         self.schemaName = None
         self.runLabel = None
         self.itemFilter = None
-        self.stepStatus = None
-        self.travelerStatus = None
+        self.intRun = None
 
     def connectDB(self):
-
         print 'dbConnect file is ', self.dbConnectFile
         kwds = {}
         try:
@@ -88,14 +46,26 @@ class getResults():
 
         # Create a new mysql connection object.
         db_url = sqlalchemy.engine.url.URL('mysql+mysqldb', **kwds)
-        engine = sqlalchemy.create_engine(db_url)
-        mysql_connection = engine.raw_connection()
+        self.engine = sqlalchemy.create_engine(db_url)
+        #mysql_connection = engine.raw_connection()   apparently unused
 
         print 'connected to host' , kwds['host']
 
-        return engine
 
-    def getResultsJH(self,engine):
+    def getResultsJH(self, htype=None, model=None,
+                     experimentSN=None, hardwareLabel=None, travelerName=None,
+                     schemaName=None, itemFilter=None, runLabel=None):
+        self._clearParams();
+        self.htype = htype
+        self.model = model
+        self.experimentSN = experimentSN
+        self.hardwareLabel = hardwareLabel
+        self.travelerName = travelerName
+        self.schemaName = schemaName
+        self.itemFilter=itemFilter
+        self.runLabel = runLabel
+
+
         self.verifyParameters()
 
 	# Form list of hardware ids for components of interest
@@ -120,7 +90,7 @@ class getResults():
 
         #print "Query to find traveler root ids of interest\n"
         #print rootsQuery, "\n"
-        result = engine.execute(rootsQuery)
+        result = self.engine.execute(rootsQuery)
 
         # Make dict associating Hid and expSN and list of root id's of interest
         raiList = []
@@ -159,7 +129,7 @@ class getResults():
 
         self.returnData = {}
 
-        fresult = engine.execute(floatQuery)
+        fresult = self.engine.execute(floatQuery)
         #print "Found ",len(rresult), " rows"
 
         for row in fresult:
@@ -172,7 +142,7 @@ class getResults():
 
         fresult.close()
 
-        iresult = engine.execute(intQuery)
+        iresult = self.engine.execute(intQuery)
 
         for row in iresult:
           rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
@@ -181,7 +151,7 @@ class getResults():
           self.storeData(expSN, row, 'int')
         iresult.close()
 
-        sresult = engine.execute(stringQuery)
+        sresult = self.engine.execute(stringQuery)
         for row in sresult:
           rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
           #print rowout.format(abbr="SRH")
@@ -219,7 +189,6 @@ class getResults():
         if expSN not in self.returnData:
             self.returnData[expSN] = expDict = {}
             expDict['hid'] = row['hid']
-            #expDict['aid'] = row['aid']
             expDict['raid'] = row['raid']
 
             #  First instance record will be used for type information
@@ -238,10 +207,14 @@ class getResults():
         for i in expDict['instances']:
             if i['schemaInstance'] == schemaInstance:
                 myInstance = i
+                # **FIX**  Add code to check if activity ids match
+                # If they don't, but process id's do, discard the data
+                # else make a new instance
                 break
         if myInstance == None:
             myInstance = {'schemaInstance' : schemaInstance}
             expDict['instances'].append(myInstance)
+            myInstance['activityId']  = row['aid']
 
         if row['resname'] not in expDict['instances'][0].keys():
             expDict['instances'][0][row['resname']] = dtype
@@ -256,6 +229,9 @@ class getResults():
         for i in self.returnData['instances']:
             if i['schemaInstance'] == schemaInstance:
                 myInstance = i
+                # **FIX**  Add code to check if activity ids match
+                # If they don't, but process id's do, discard the data
+                # else make a new instance
                 if myInstance['activityId'] != row['aid']:
                     print 'Tilt!  Distinct activity ids ', myInstance['activityId'], " and ", row['aid'] 
                 break
@@ -284,9 +260,13 @@ class getResults():
                     del expDict['instances'][ix]
                 ix -= 1
 
-    def getRunResults(self, engine, run, schemaName=None, itemFilter=None):
+    def getRunResults(self, run, schemaName=None, itemFilter=None):
+        self._clearParams()
         if schemaName == None:
             print "Schema name required for this version of getRunResults"
+            print "Have a nice day"
+        if run == None:
+            print "Run number is a required argument for getRunResults"
             print "Have a nice day"
         
         self.schemaName = schemaName
@@ -306,7 +286,7 @@ class getResults():
 
         sqlString = "select RunNumber.rootActivityId as rai, Activity.hardwareId as hid, Hardware.lsstId as expSN, HardwareType.name as hname from RunNumber join Activity on RunNumber.rootActivityId=Activity.id join Hardware on Activity.hardwareId=Hardware.id join HardwareType on HardwareType.id=Hardware.hardwareTypeId where runInt='" + str(intRun) + "'";
 
-        result = engine.execute(sqlString)
+        result = self.engine.execute(sqlString)
         for row in result:      # can only be one
             self.htype = row['hname']
             self.experimentSN = row['expSN']
@@ -330,17 +310,17 @@ class getResults():
                            'hid' : self.oneHid,
                            'instances' : [{'schemaInstance' : 0}] }
 
-        fresult = engine.execute(floatQuery)
+        fresult = self.engine.execute(floatQuery)
         for row in fresult:
             self.storeRunData(row, 'float')
         fresult.close()
 
-        iresult = engine.execute(intQuery)
+        iresult = self.engine.execute(intQuery)
         for row in iresult:
             self.storeRunData(row, 'int')
         iresult.close()
 
-        sresult = engine.execute(stringQuery)
+        sresult = self.engine.execute(stringQuery)
         for row in sresult:
             self.storeRunData(row, 'string')
         sresult.close()
@@ -361,18 +341,19 @@ if __name__ == "__main__":
     #eT = getResults(schemaName=schemaName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
     #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3) )
 
+
+    eT = getResults(dbConnectFile='/u/ey/jrb/et_dev_query.txt')
+    eT.connectDB()
+
     schemaName = 'fe55_raft_analysis'
     htype = 'LCA-11021_RTM'
     travelerName = 'SR-RTM-EOT-03'
 
-    eT = getResults(schemaName=schemaName, htype=htype, 
-                    travelerName=travelerName,
-                    dbConnectFile='/u/ey/jrb/et_dev_query.txt',
-                    experimentSN='LCA-11021_RTM-004_ETU2-Dev',
-                    itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
-    engine = eT.connectDB()
+    returnData = eT.getResultsJH(schemaName=schemaName, htype=htype, 
+                                 travelerName=travelerName,
+                                 experimentSN='LCA-11021_RTM-004_ETU2-Dev',
+                                 itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
-    returnData  = eT.getResultsJH(engine)
     for lsstId in returnData:
         print "\n\nKeys in dict for component: ",lsstId 
         expDict = returnData[lsstId]
@@ -386,9 +367,9 @@ if __name__ == "__main__":
             print "Instance #", i, " dict: ", d 
             i += 1
 
-    eT.clearParams()
+    #eT.clearParams()
 
-    runData = eT.getRunResults(engine, 4689, schemaName=schemaName,
+    runData = eT.getRunResults(4689, schemaName=schemaName,
                                itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
     for k in runData:
@@ -401,14 +382,3 @@ if __name__ == "__main__":
         print "Instance #", i, " dict: ", d
         i += 1
 
-    #Now do it again with a filter
-    #runData = eT.getRunResults(engine, 4689, 'read_noise', itemFilter=('amp', 5))
-
-    #for k in runData:
-    #    print k
-
-    #i = 0
-    #for d in runData['instances']:
-    #    print "Data for instance #", i, " dict: "
-    #    print d
-    #    i += 1
