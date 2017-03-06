@@ -138,11 +138,11 @@ class getResults():
         
         # Form list of interesting rootId's
         raiString = "('" + string.join(raiList, "','") + "')"
-        #print "raiString: ", raiString, "\n"
+        print "raiString: ", raiString, "\n"
             
         genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where {abbr}.schemaName='"
         genQuery += self.schemaName
-        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, ressI asc, resname"
+        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, A.id desc, ressI asc, resname"
         floatQuery = genQuery.format(abbr='FRH', 
                                      resultsTable='FloatResultHarnessed')
         intQuery = genQuery.format(abbr='IRH', 
@@ -219,12 +219,16 @@ class getResults():
         if expSN not in self.returnData:
             self.returnData[expSN] = expDict = {}
             expDict['hid'] = row['hid']
-            expDict['aid'] = row['aid']
+            #expDict['aid'] = row['aid']
             expDict['raid'] = row['raid']
 
             #  First instance record will be used for type information
             expDict['instances'] = [{'schemaInstance' : 0}]
         else : expDict = self.returnData[expSN]
+
+        if expDict['raid'] != row['raid']:
+            #print 'Discarding data from traveler with raid=', row['raid']
+            return
 
         schemaInstance = row['ressI']
         # Note instance numbers always start with 1; list indices with 0
@@ -242,6 +246,7 @@ class getResults():
         if row['resname'] not in expDict['instances'][0].keys():
             expDict['instances'][0][row['resname']] = dtype
         myInstance[row['resname']] = row['resvalue']
+        myInstance['activityId']  = row['aid']
 
     # For now, just have one list of instances
     # When we handle multiple schemas in one request it will be different
@@ -251,15 +256,19 @@ class getResults():
         for i in self.returnData['instances']:
             if i['schemaInstance'] == schemaInstance:
                 myInstance = i
+                if myInstance['activityId'] != row['aid']:
+                    print 'Tilt!  Distinct activity ids ', myInstance['activityId'], " and ", row['aid'] 
                 break
         if myInstance == None:
             myInstance = {'schemaInstance' : schemaInstance, 
-                          'processName' : row['pname']}
+                          'processName' : row['pname'],
+                          'activityId': row['aid']}
             self.returnData['instances'].append(myInstance)
 
         if row['resname'] not in self.returnData['instances'][0].keys():
             self.returnData['instances'][0][row['resname']] = dtype
         myInstance[row['resname']] = row['resvalue']
+
 
 
     def prune(self):
@@ -345,14 +354,22 @@ class getResults():
         
 if __name__ == "__main__":
     
-    schemaName = 'read_noise'
-    valueName = 'read_noise'
-    htype = 'ITL-CCD'
-    travelerName = 'SR-EOT-1'
+    #schemaName = 'read_noise'
+    #htype = 'ITL-CCD'
+    #travelerName = 'SR-EOT-1'
 
-    eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
+    #eT = getResults(schemaName=schemaName, htype=htype, travelerName=travelerName, experimentSN='ITL-3800C-021', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp', 3))
     #eT = getResults(schemaName=schemaName, valueName=valueName, htype=htype, travelerName=travelerName, model='3800C', dbConnectFile='/u/ey/jrb/et_prod_query.txt', itemFilter=('amp' , 3) )
 
+    schemaName = 'fe55_raft_analysis'
+    htype = 'LCA-11021_RTM'
+    travelerName = 'SR-RTM-EOT-03'
+
+    eT = getResults(schemaName=schemaName, htype=htype, 
+                    travelerName=travelerName,
+                    dbConnectFile='/u/ey/jrb/et_dev_query.txt',
+                    experimentSN='LCA-11021_RTM-004_ETU2-Dev',
+                    itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
     engine = eT.connectDB()
 
     returnData  = eT.getResultsJH(engine)
@@ -361,7 +378,7 @@ if __name__ == "__main__":
         expDict = returnData[lsstId]
         print "hardware id: ", returnData[lsstId]['hid']
         print "root activity id: ", returnData[lsstId]['raid']
-        print "activity id: ", returnData[lsstId]['aid']
+        #print "activity id: ", returnData[lsstId]['aid']
 
         nInstance = len(returnData[lsstId]['instances'])
         i = 0
@@ -371,25 +388,27 @@ if __name__ == "__main__":
 
     eT.clearParams()
 
-    runData = eT.getRunResults(engine, 96, 'read_noise')
+    runData = eT.getRunResults(engine, 4689, schemaName=schemaName,
+                               itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
     for k in runData:
-        print k
+        if k != 'instances':
+            print k,"=", runData[k]
+        else: print k
 
     i = 0
     for d in runData['instances']:
-        print "Data for instance #", i, " dict: "
-        print d
+        print "Instance #", i, " dict: ", d
         i += 1
 
     #Now do it again with a filter
-    runData = eT.getRunResults(engine, 96, 'read_noise', itemFilter=('amp', 5))
+    #runData = eT.getRunResults(engine, 4689, 'read_noise', itemFilter=('amp', 5))
 
-    for k in runData:
-        print k
+    #for k in runData:
+    #    print k
 
-    i = 0
-    for d in runData['instances']:
-        print "Data for instance #", i, " dict: "
-        print d
-        i += 1
+    #i = 0
+    #for d in runData['instances']:
+    #    print "Data for instance #", i, " dict: "
+    #    print d
+    #    i += 1
