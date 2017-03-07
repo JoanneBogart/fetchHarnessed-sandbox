@@ -253,12 +253,7 @@ class getResults():
         val = self.itemFilter[1]
         for expSN in self.returnData:
             expDict = self.returnData[expSN]
-            if key not in expDict['instances'][0].keys(): return
-            ix = len(expDict['instances']) - 1
-            while ix > 0:
-                if expDict['instances'][ix][key] != val:
-                    del expDict['instances'][ix]
-                ix -= 1
+            pruneInstances(key, val, expDict['instances'])
 
     def getRunResults(self, run, schemaName=None, itemFilter=None):
         self._clearParams()
