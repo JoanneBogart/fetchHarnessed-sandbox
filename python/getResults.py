@@ -15,14 +15,12 @@ def pruneInstances(k, v, instances):
     return
 
 class getResults():
-
     def __init__(self, dbConnectFile='db_connect.txt'):
         self.engine = None
         self.dbConnectFile = dbConnectFile
 
-
     # Clear everything except connect file parameter
-    def _clearParams(self) :
+    def _clearCache(self) :
         self.htype = None
         self.model = None
         self.experimentSN = None
@@ -32,6 +30,7 @@ class getResults():
         self.runLabel = None
         self.itemFilter = None
         self.intRun = None
+        self.hardwareDict = None
 
     def connectDB(self):
         print 'dbConnect file is ', self.dbConnectFile
@@ -55,7 +54,7 @@ class getResults():
     def getResultsJH(self, htype=None, model=None,
                      experimentSN=None, hardwareLabel=None, travelerName=None,
                      schemaName=None, itemFilter=None, runLabel=None):
-        self._clearParams();
+        self._clearCache();
         self.htype = htype
         self.model = model
         self.experimentSN = experimentSN
@@ -65,8 +64,7 @@ class getResults():
         self.itemFilter=itemFilter
         self.runLabel = runLabel
 
-
-        self.verifyParameters()
+        self._verifyParameters()
 
 	# Form list of hardware ids for components of interest
         hids = []
@@ -81,9 +79,6 @@ class getResults():
         # To support hardware label arg, add extra condition to where clause
         # but not for this first attempt
 
-        #print "hardware query is: \n"
-        #print hidQuery, "\n"
-
         # Retrieve list of all rootActivityId's which may be relevant
         # (correct process name; run on a component we care about)
         rootsQuery = "select A.id as Aid, H.id as Hid, H.lsstId as expSN from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id where H.id in (" + hidQuery + ") and A.id=A.rootActivityId and P.name='" + self.travelerName + "' order by H.id asc, A.id desc"
@@ -94,11 +89,11 @@ class getResults():
 
         # Make dict associating Hid and expSN and list of root id's of interest
         raiList = []
-        hardwareDict = {}
+        self.hardwareDict = {}
         for row in result:
-            print "hid=",row['Hid']," rootId=",row['Aid']
+            #print "hid=",row['Hid']," rootId=",row['Aid']
             raiList.append(str(row['Aid']))
-            hardwareDict[row['Hid']] = row['expSN']
+            self.hardwareDict[row['Hid']] = row['expSN']
 
         result.close()
 
@@ -108,11 +103,11 @@ class getResults():
         
         # Form list of interesting rootId's
         raiString = "('" + string.join(raiList, "','") + "')"
-        print "raiString: ", raiString, "\n"
+        #print "raiString: ", raiString, "\n"
             
-        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.rootActivityId as raid, A.hardwareId as hid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId where {abbr}.schemaName='"
+        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,Process.name as pname,A.rootActivityId as raid, A.hardwareId as hid,A.processId as pid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId join Process on Process.id=A.processId where {abbr}.schemaName='"
         genQuery += self.schemaName
-        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, A.id desc, ressI asc, resname"
+        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, A.processId asc, A.id desc, ressI asc, resname"
         floatQuery = genQuery.format(abbr='FRH', 
                                      resultsTable='FloatResultHarnessed')
         intQuery = genQuery.format(abbr='IRH', 
@@ -122,141 +117,27 @@ class getResults():
 
         #print "Monster float query:\n"
         #print floatQuery
-        #print "Monster int query:\n"
-        #print intQuery
-        #print "Monster string query:\n"
-        #print stringQuery
 
         self.returnData = {}
 
         fresult = self.engine.execute(floatQuery)
-        #print "Found ",len(rresult), " rows"
 
-        for row in fresult:
-          rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
-          #print rowout.format(abbr="FRH")
-          #, " Act status: ", row['actStatus']
-
-          expSN = hardwareDict[row['hid']]
-          self.storeData(expSN, row, 'float')
-
-        fresult.close()
+        self._storeLastRun(fresult, 'float')
 
         iresult = self.engine.execute(intQuery)
-
-        for row in iresult:
-          rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
-          #print rowout.format(abbr="IRH")
-          expSN = hardwareDict[row['hid']]
-          self.storeData(expSN, row, 'int')
-        iresult.close()
+        self._storeLastRun(iresult, 'int')
 
         sresult = self.engine.execute(stringQuery)
-        for row in sresult:
-          rowout =  "Hid: " + str(row['hid'])+  " Aid: " + str(row['aid']) + " {abbr} instance: " + str(row['ressI']) +  " {abbr}name: " + row['resname'] + " {abbr}value: " + str(row['resvalue'])
-          #print rowout.format(abbr="SRH")
-          expSN = hardwareDict[row['hid']]
-          self.storeData(expSN, row, 'str')
-
-        sresult.close()
+        self._storeLastRun(sresult, 'str')
 
         if self.itemFilter is not None:
-            self.prune( )
+            self._prune( )
 
         return self.returnData
 
-    def verifyParameters(self):
-        if self.htype is None:
-            raise KeyError,'Missing value for "htype"'
-        if self.schemaName is None:
-            raise KeyError, 'Missing value for "schemaName"'
-        if self.itemFilter is not None:
-            self.parseItemFilter()
-
-    def parseItemFilter(self):
-        # Must be tuple of length 2, each item a string
-        if not isinstance(self.itemFilter, tuple):
-            raise KeyError, 'itemFilter must be tuple'
-        if not len(self.itemFilter) == 2:
-            raise KeyError, 'itemFilter must be tuple of length 2'
-        if not isinstance(self.itemFilter[0], str): 
-            raise KeyError, 'itemFilter key must be a string'
-        if isinstance(self.itemFilter[1], str) or isinstance(self.itemFilter[1], int) or isinstance(self.itemFilter[1], long): return
-        raise KeyError, 'itemFilter value must be integer or string'
-
-    # Store a single value, creating containing dicts as needed
-    def storeData(self, expSN, row, dtype):
-        if expSN not in self.returnData:
-            self.returnData[expSN] = expDict = {}
-            expDict['hid'] = row['hid']
-            expDict['raid'] = row['raid']
-
-            #  First instance record will be used for type information
-            expDict['instances'] = [{'schemaInstance' : 0}]
-        else : expDict = self.returnData[expSN]
-
-        if expDict['raid'] != row['raid']:
-            #print 'Discarding data from traveler with raid=', row['raid']
-            return
-
-        schemaInstance = row['ressI']
-        # Note instance numbers always start with 1; list indices with 0
-
-        # Make our instance record if it doesn't already exist
-        myInstance = None
-        for i in expDict['instances']:
-            if i['schemaInstance'] == schemaInstance:
-                myInstance = i
-                # **FIX**  Add code to check if activity ids match
-                # If they don't, but process id's do, discard the data
-                # else make a new instance
-                break
-        if myInstance == None:
-            myInstance = {'schemaInstance' : schemaInstance}
-            expDict['instances'].append(myInstance)
-            myInstance['activityId']  = row['aid']
-
-        if row['resname'] not in expDict['instances'][0].keys():
-            expDict['instances'][0][row['resname']] = dtype
-        myInstance[row['resname']] = row['resvalue']
-        myInstance['activityId']  = row['aid']
-
-    # For now, just have one list of instances
-    # When we handle multiple schemas in one request it will be different
-    def storeRunData(self, row, dtype):
-        schemaInstance = row['ressI']
-        myInstance = None
-        for i in self.returnData['instances']:
-            if i['schemaInstance'] == schemaInstance:
-                myInstance = i
-                # **FIX**  Add code to check if activity ids match
-                # If they don't, but process id's do, discard the data
-                # else make a new instance
-                if myInstance['activityId'] != row['aid']:
-                    print 'Tilt!  Distinct activity ids ', myInstance['activityId'], " and ", row['aid'] 
-                break
-        if myInstance == None:
-            myInstance = {'schemaInstance' : schemaInstance, 
-                          'processName' : row['pname'],
-                          'activityId': row['aid']}
-            self.returnData['instances'].append(myInstance)
-
-        if row['resname'] not in self.returnData['instances'][0].keys():
-            self.returnData['instances'][0][row['resname']] = dtype
-        myInstance[row['resname']] = row['resvalue']
-
-
-
-    def prune(self):
-        if self.itemFilter is None: return
-        key = self.itemFilter[0]
-        val = self.itemFilter[1]
-        for expSN in self.returnData:
-            expDict = self.returnData[expSN]
-            pruneInstances(key, val, expDict['instances'])
-
+    # Public routine: get results for a known run
     def getRunResults(self, run, schemaName=None, itemFilter=None):
-        self._clearParams()
+        self._clearCache()
         if schemaName == None:
             print "Schema name required for this version of getRunResults"
             print "Have a nice day"
@@ -277,7 +158,7 @@ class getResults():
 
         self.intRun = intRun
         if (itemFilter != None):
-            self.parseItemFilter()
+            self._parseItemFilter()
 
         sqlString = "select RunNumber.rootActivityId as rai, Activity.hardwareId as hid, Hardware.lsstId as expSN, HardwareType.name as hname from RunNumber join Activity on RunNumber.rootActivityId=Activity.id join Hardware on Activity.hardwareId=Hardware.id join HardwareType on HardwareType.id=Hardware.hardwareTypeId where runInt='" + str(intRun) + "'";
 
@@ -288,9 +169,9 @@ class getResults():
             self.oneRai = row['rai']
             self.oneHid = row['hid']
 
-        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,Process.name as pname,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId join Process on Process.id=A.processId where {abbr}.schemaName='"
+        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.processId as pid,Process.name as pname,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId join Process on Process.id=A.processId where {abbr}.schemaName='"
         genQuery += self.schemaName
-        genQuery += "' and A.rootActivityId='" + str(self.oneRai) + "' and ASH.activityStatusId='1' order by  A.id, ressI asc, resname"
+        genQuery += "' and A.rootActivityId='" + str(self.oneRai) + "' and ASH.activityStatusId='1' order by  A.id desc, ressI asc, resname"
         floatQuery = genQuery.format(abbr='FRH', 
                                      resultsTable='FloatResultHarnessed')
         intQuery = genQuery.format(abbr='IRH', 
@@ -307,17 +188,18 @@ class getResults():
 
         fresult = self.engine.execute(floatQuery)
         for row in fresult:
-            self.storeRunData(row, 'float')
+            #print " keys: ", row.keys()
+            self._storeRunData(row, 'float')
         fresult.close()
 
         iresult = self.engine.execute(intQuery)
         for row in iresult:
-            self.storeRunData(row, 'int')
+            self._storeRunData(row, 'int')
         iresult.close()
 
         sresult = self.engine.execute(stringQuery)
         for row in sresult:
-            self.storeRunData(row, 'string')
+            self._storeRunData(row, 'string')
         sresult.close()
 
         if self.itemFilter is not None:
@@ -326,6 +208,134 @@ class getResults():
          
 
         return self.returnData
+
+
+    def _verifyParameters(self):
+        if self.htype is None:
+            raise KeyError,'Missing value for "htype"'
+        if self.schemaName is None:
+            raise KeyError, 'Missing value for "schemaName"'
+        if self.itemFilter is not None:
+            self._parseItemFilter()
+
+    def _parseItemFilter(self):
+        # Must be tuple of length 2, each item a string
+        if not isinstance(self.itemFilter, tuple):
+            raise KeyError, 'itemFilter must be tuple'
+        if not len(self.itemFilter) == 2:
+            raise KeyError, 'itemFilter must be tuple of length 2'
+        if not isinstance(self.itemFilter[0], str): 
+            raise KeyError, 'itemFilter key must be a string'
+        if isinstance(self.itemFilter[1], str) or isinstance(self.itemFilter[1], int) or isinstance(self.itemFilter[1], long): return
+        raise KeyError, 'itemFilter value must be integer or string'
+
+    # Data comes back sorted by hardware component (ascending), then run
+    # (root activity id, descending) We only want data from the most
+    # recent run. _storeData tells us when to move on to next component
+    def _storeLastRun(self, dbresults, dtype):
+        row = dbresults.fetchone()
+        while (row != None):
+          expSN = self.hardwareDict[row['hid']]
+          oldHid = row['hid']
+          iRow = 1
+          while ((row != None) and (oldHid == row['hid']) ):
+              more = self._storeData(expSN, row, dtype)
+              if (more == 0):       # skip to next expSN
+                  #print "Got more == 0 on iRow ", iRow
+                  while oldHid == row['hid']:
+                      row = dbresults.fetchone()
+                      iRow +=1
+                      if row == None: break
+              else:
+                  row = dbresults.fetchone()
+                  iRow += 1
+        #print "total # of rows: ", iRow
+        dbresults.close()
+
+
+    # Store a single value, creating containing dicts as needed
+    # Returns 0 if new (older) root act. id was encountered, else 1
+    def _storeData(self, expSN, row, dtype):
+        if expSN not in self.returnData:
+            self.returnData[expSN] = expDict = {}
+            expDict['hid'] = row['hid']
+            expDict['raid'] = row['raid']
+
+            #  First instance record will be used for type information
+            expDict['instances'] = [{'schemaInstance' : 0}]
+        else : expDict = self.returnData[expSN]
+
+        if expDict['raid'] != row['raid']:
+            #print 'Discarding data from traveler with raid=', row['raid']
+            #print 'after storing data for traveler with raid=', expDict['raid']
+            return 0
+
+        schemaInstance = row['ressI']
+        # Note instance numbers always start with 1; list indices with 0
+
+        # Make our instance record if it doesn't already exist
+        myInstance = None
+        for i in expDict['instances']:
+            if i['schemaInstance'] == schemaInstance:
+                myInstance = i
+
+                if myInstance['activityId'] != row['aid']:
+                    if myInstance['processId'] != row['pid']:
+                        # Need another instance after all
+                        myInstance = None
+                    else: # Skip. > 1 activity for same step in traveler.
+                        return -1
+                break
+        if myInstance == None:
+            myInstance = {'schemaInstance' : schemaInstance}
+            expDict['instances'].append(myInstance)
+            myInstance['activityId']  = row['aid']
+            myInstance['processId'] = row['pid']
+            myInstance['processName'] = row['pname']
+
+        if row['resname'] not in expDict['instances'][0].keys():
+            expDict['instances'][0][row['resname']] = dtype
+        myInstance[row['resname']] = row['resvalue']
+
+        return 1
+
+    # For now, just have one list of instances
+    # When we handle multiple schemas in one request it will be different
+    def _storeRunData(self, row, dtype):
+        schemaInstance = row['ressI']
+        myInstance = None
+        for i in self.returnData['instances']:
+            if i['schemaInstance'] == schemaInstance:
+                myInstance = i
+
+                if myInstance['activityId'] != row['aid']:
+                    if myInstance['processId'] != row['pid']:
+                        # Need another instance after all
+                        myInstance = None
+                    else: # Skip. > 1 activity for same step in traveler.
+                        return -1
+                break
+        if myInstance == None:
+            myInstance = {'schemaInstance' : schemaInstance, 
+                          'processId' : row['pid'],
+                          'processName' : row['pname'],
+                          'activityId': row['aid']}
+            self.returnData['instances'].append(myInstance)
+
+        if row['resname'] not in self.returnData['instances'][0].keys():
+            self.returnData['instances'][0][row['resname']] = dtype
+        myInstance[row['resname']] = row['resvalue']
+        return 1
+
+
+    def _prune(self):
+        if self.itemFilter is None: return
+        key = self.itemFilter[0]
+        val = self.itemFilter[1]
+        for expSN in self.returnData:
+            expDict = self.returnData[expSN]
+            pruneInstances(key, val, expDict['instances'])
+
         
 if __name__ == "__main__":
     
@@ -361,8 +371,6 @@ if __name__ == "__main__":
         for d in returnData[lsstId]['instances']:
             print "Instance #", i, " dict: ", d 
             i += 1
-
-    #eT.clearParams()
 
     runData = eT.getRunResults(4689, schemaName=schemaName,
                                itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
