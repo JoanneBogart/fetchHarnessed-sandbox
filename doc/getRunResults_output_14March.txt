@@ -1,0 +1,139 @@
+dbConnect file is  /u/ey/jrb/et_dev_query.txt
+connected to host mysql-dev01.slac.stanford.edu
+Calling getRunResults with arguments 
+run= 4689
+schemaName=None
+itemFilter=('sensor_id', 'ITL-3800C-102-Dev')
+instance 0:  {'system_noise': 'float', 'slot': 'string', 'sensor_id': 'string', 'read_noise': 'float', 'total_noise': 'float', 'schemaInstance': 0, 'amp': 'int'}
+instance  144 :
+{'system_noise': 0.0, 'slot': 'S22', 'sensor_id': 'ITL-3800C-103-Dev', 'read_noise': 2.7245140075683594, 'total_noise': 2.7245140075683594, 'activityId': 26784L, 'schemaInstance': 144L, 'amp': 16L}
+instance 0:  {'slot': 'string', 'sensor_id': 'string', 'gain': 'float', 'schemaInstance': 0, 'amp': 'int', 'gain_error': 'float', 'psf_sigma': 'float'}
+instance  144 :
+{'slot': 'S22', 'sensor_id': 'ITL-3800C-103-Dev', 'activityId': 26777L, 'gain': 0.10011766105890274, 'schemaInstance': 144L, 'amp': 16L, 'gain_error': -1.0, 'psf_sigma': 4.840000152587891}
+hid = 1011
+raid = 26730
+experimentSN = LCA-11021_RTM-004_ETU2-Dev
+run = 4689
+schemas
+Schema name   read_noise_raft has process step keys ['read_noise_raft']
+process step  read_noise_raft
+{'system_noise': 'float', 'slot': 'string', 'sensor_id': 'string', 'read_noise': 'float', 'total_noise': 'float', 'schemaInstance': 0, 'amp': 'int'}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 0.0, 'total_noise': 0.0, 'activityId': 26784L, 'schemaInstance': 97L, 'amp': 1L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 13.270350456237793, 'total_noise': 13.270350456237793, 'activityId': 26784L, 'schemaInstance': 98L, 'amp': 2L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.393224716186523, 'total_noise': 16.393224716186523, 'activityId': 26784L, 'schemaInstance': 99L, 'amp': 3L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 0.0, 'total_noise': 0.0, 'activityId': 26784L, 'schemaInstance': 100L, 'amp': 4L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 18.129140853881836, 'total_noise': 18.129140853881836, 'activityId': 26784L, 'schemaInstance': 101L, 'amp': 5L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.505123138427734, 'total_noise': 16.505123138427734, 'activityId': 26784L, 'schemaInstance': 102L, 'amp': 6L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.246488571166992, 'total_noise': 16.246488571166992, 'activityId': 26784L, 'schemaInstance': 103L, 'amp': 7L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 0.0, 'total_noise': 0.0, 'activityId': 26784L, 'schemaInstance': 104L, 'amp': 8L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 11.612844467163086, 'total_noise': 11.612844467163086, 'activityId': 26784L, 'schemaInstance': 105L, 'amp': 9L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 15.764790534973145, 'total_noise': 15.764790534973145, 'activityId': 26784L, 'schemaInstance': 106L, 'amp': 10L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 24.7298526763916, 'total_noise': 24.7298526763916, 'activityId': 26784L, 'schemaInstance': 107L, 'amp': 11L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.42471694946289, 'total_noise': 16.42471694946289, 'activityId': 26784L, 'schemaInstance': 108L, 'amp': 12L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 15.640118598937988, 'total_noise': 15.640118598937988, 'activityId': 26784L, 'schemaInstance': 109L, 'amp': 13L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 15.861257553100586, 'total_noise': 15.861257553100586, 'activityId': 26784L, 'schemaInstance': 110L, 'amp': 14L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 17.602685928344727, 'total_noise': 17.602685928344727, 'activityId': 26784L, 'schemaInstance': 111L, 'amp': 15L}
+{'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 17.88789176940918, 'total_noise': 17.88789176940918, 'activityId': 26784L, 'schemaInstance': 112L, 'amp': 16L}
+Schema name   job_info has process step keys ['read_noise_raft', 'fe55_raft_analysis', 'fe55_raft_acq']
+process step  read_noise_raft
+{'job_id': 'string', 'schemaInstance': 0, 'job_name': 'string'}
+{'activityId': 26784L, 'job_id': '26784', 'schemaInstance': 1L, 'job_name': 'read_noise_raft'}
+process step  fe55_raft_analysis
+{'job_id': 'string', 'schemaInstance': 0, 'job_name': 'string'}
+{'activityId': 26777L, 'job_id': '26777', 'schemaInstance': 1L, 'job_name': 'fe55_raft_analysis'}
+process step  fe55_raft_acq
+{'job_id': 'string', 'schemaInstance': 0, 'job_name': 'string'}
+{'activityId': 26776L, 'job_id': '26776', 'schemaInstance': 1L, 'job_name': 'fe55_raft_acq'}
+Schema name   eo_acq has process step keys ['fe55_raft_acq']
+process step  fe55_raft_acq
+{'stat': 'int', 'power_version': 'string', 'teststand_version': 'string', 'archon_version': 'string', 'teststand_revision': 'string', 'schemaInstance': 0, 'power_revision': 'string', 'ts8_revision': 'string', 'archon_revision': 'string', 'ts8_version': 'string'}
+{'stat': 845827L, 'power_version': '1.1.1-SNAPSHOT', 'teststand_version': '1.1.21-SNAPSHOT', 'archon_version': 'NA', 'activityId': 26776L, 'teststand_revision': '40042', 'schemaInstance': 1L, 'power_revision': '', 'ts8_revision': '40013', 'archon_revision': 'NA', 'ts8_version': '1.0.11-SNAPSHOT'}
+Schema name   package_versions has process step keys ['read_noise_raft', 'fe55_raft_analysis', 'fe55_raft_acq']
+process step  read_noise_raft
+{'version': 'string', 'schemaInstance': 0, 'package': 'string'}
+{'activityId': 26784L, 'version': '0.4.34', 'schemaInstance': 1L, 'package': 'harnessed-jobs'}
+{'activityId': 26784L, 'version': '0.13.0', 'schemaInstance': 2L, 'package': 'lcatr-harness'}
+{'activityId': 26784L, 'version': '0.5.2', 'schemaInstance': 3L, 'package': 'lcatr-schema'}
+{'activityId': 26784L, 'version': '0.3.1', 'schemaInstance': 4L, 'package': 'lcatr-modulefiles'}
+{'activityId': 26784L, 'version': '0.0.20', 'schemaInstance': 5L, 'package': 'eotest'}
+{'activityId': 26784L, 'version': '1.2.2', 'schemaInstance': 6L, 'package': 'eTraveler-clientAPI'}
+{'activityId': 26784L, 'version': '0.0.11', 'schemaInstance': 7L, 'package': 'config_files'}
+{'activityId': 26784L, 'version': '0.0.4', 'schemaInstance': 8L, 'package': 'camera-model'}
+{'activityId': 26784L, 'version': '0.0.4', 'schemaInstance': 9L, 'package': 'EO-analysis-jobs'}
+{'activityId': 26784L, 'version': '0.0.2', 'schemaInstance': 10L, 'package': 'sequencer-files'}
+{'activityId': 26784L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 11L, 'package': 'org-lsst-ccs-subsystem-ts8-main'}
+{'activityId': 26784L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 12L, 'package': 'org-lsst-ccs-subsystem-ts8-gui'}
+{'activityId': 26784L, 'version': '2.0.1', 'schemaInstance': 13L, 'package': 'org-lsst-ccs-localdb-main'}
+{'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 14L, 'package': 'symlink.ts8'}
+{'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 15L, 'package': 'symlink.ts8Sim'}
+{'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-gui', 'schemaInstance': 16L, 'package': 'symlink.CCS-Console'}
+{'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 17L, 'package': 'symlink.JythonConsole'}
+{'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 18L, 'package': 'symlink.ShellCommandConsole'}
+{'activityId': 26784L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 19L, 'package': 'symlink.LocalRestServices'}
+{'activityId': 26784L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 20L, 'package': 'symlink.TrendingIngestModule'}
+{'activityId': 26784L, 'version': '/home/ts8prod/miniconda2/', 'schemaInstance': 21L, 'package': 'stack_dir'}
+process step  fe55_raft_analysis
+{'version': 'string', 'schemaInstance': 0, 'package': 'string'}
+{'activityId': 26777L, 'version': '0.4.34', 'schemaInstance': 1L, 'package': 'harnessed-jobs'}
+{'activityId': 26777L, 'version': '0.13.0', 'schemaInstance': 2L, 'package': 'lcatr-harness'}
+{'activityId': 26777L, 'version': '0.5.2', 'schemaInstance': 3L, 'package': 'lcatr-schema'}
+{'activityId': 26777L, 'version': '0.3.1', 'schemaInstance': 4L, 'package': 'lcatr-modulefiles'}
+{'activityId': 26777L, 'version': '0.0.20', 'schemaInstance': 5L, 'package': 'eotest'}
+{'activityId': 26777L, 'version': '1.2.2', 'schemaInstance': 6L, 'package': 'eTraveler-clientAPI'}
+{'activityId': 26777L, 'version': '0.0.11', 'schemaInstance': 7L, 'package': 'config_files'}
+{'activityId': 26777L, 'version': '0.0.4', 'schemaInstance': 8L, 'package': 'camera-model'}
+{'activityId': 26777L, 'version': '0.0.4', 'schemaInstance': 9L, 'package': 'EO-analysis-jobs'}
+{'activityId': 26777L, 'version': '0.0.2', 'schemaInstance': 10L, 'package': 'sequencer-files'}
+{'activityId': 26777L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 11L, 'package': 'org-lsst-ccs-subsystem-ts8-main'}
+{'activityId': 26777L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 12L, 'package': 'org-lsst-ccs-subsystem-ts8-gui'}
+{'activityId': 26777L, 'version': '2.0.1', 'schemaInstance': 13L, 'package': 'org-lsst-ccs-localdb-main'}
+{'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 14L, 'package': 'symlink.ts8'}
+{'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 15L, 'package': 'symlink.ts8Sim'}
+{'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-gui', 'schemaInstance': 16L, 'package': 'symlink.CCS-Console'}
+{'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 17L, 'package': 'symlink.JythonConsole'}
+{'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 18L, 'package': 'symlink.ShellCommandConsole'}
+{'activityId': 26777L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 19L, 'package': 'symlink.LocalRestServices'}
+{'activityId': 26777L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 20L, 'package': 'symlink.TrendingIngestModule'}
+{'activityId': 26777L, 'version': '/home/ts8prod/miniconda2/', 'schemaInstance': 21L, 'package': 'stack_dir'}
+process step  fe55_raft_acq
+{'version': 'string', 'schemaInstance': 0, 'package': 'string'}
+{'activityId': 26776L, 'version': '0.4.34', 'schemaInstance': 1L, 'package': 'harnessed-jobs'}
+{'activityId': 26776L, 'version': '0.13.0', 'schemaInstance': 2L, 'package': 'lcatr-harness'}
+{'activityId': 26776L, 'version': '0.5.2', 'schemaInstance': 3L, 'package': 'lcatr-schema'}
+{'activityId': 26776L, 'version': '0.3.1', 'schemaInstance': 4L, 'package': 'lcatr-modulefiles'}
+{'activityId': 26776L, 'version': '0.0.20', 'schemaInstance': 5L, 'package': 'eotest'}
+{'activityId': 26776L, 'version': '1.2.2', 'schemaInstance': 6L, 'package': 'eTraveler-clientAPI'}
+{'activityId': 26776L, 'version': '0.0.11', 'schemaInstance': 7L, 'package': 'config_files'}
+{'activityId': 26776L, 'version': '0.0.4', 'schemaInstance': 8L, 'package': 'camera-model'}
+{'activityId': 26776L, 'version': '0.0.4', 'schemaInstance': 9L, 'package': 'EO-analysis-jobs'}
+{'activityId': 26776L, 'version': '0.0.2', 'schemaInstance': 10L, 'package': 'sequencer-files'}
+{'activityId': 26776L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 11L, 'package': 'org-lsst-ccs-subsystem-ts8-main'}
+{'activityId': 26776L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 12L, 'package': 'org-lsst-ccs-subsystem-ts8-gui'}
+{'activityId': 26776L, 'version': '2.0.1', 'schemaInstance': 13L, 'package': 'org-lsst-ccs-localdb-main'}
+{'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 14L, 'package': 'symlink.ts8'}
+{'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 15L, 'package': 'symlink.ts8Sim'}
+{'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-gui', 'schemaInstance': 16L, 'package': 'symlink.CCS-Console'}
+{'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 17L, 'package': 'symlink.JythonConsole'}
+{'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 18L, 'package': 'symlink.ShellCommandConsole'}
+{'activityId': 26776L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 19L, 'package': 'symlink.LocalRestServices'}
+{'activityId': 26776L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 20L, 'package': 'symlink.TrendingIngestModule'}
+{'activityId': 26776L, 'version': '/home/ts8prod/miniconda2/', 'schemaInstance': 21L, 'package': 'stack_dir'}
+Schema name   fe55_raft_analysis has process step keys ['fe55_raft_analysis']
+process step  fe55_raft_analysis
+{'slot': 'string', 'sensor_id': 'string', 'gain': 'float', 'schemaInstance': 0, 'amp': 'int', 'gain_error': 'float', 'psf_sigma': 'float'}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.0, 'schemaInstance': 97L, 'amp': 1L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.7107992768287659, 'schemaInstance': 98L, 'amp': 2L, 'gain_error': 0.6366345882415771, 'psf_sigma': 5.320000171661377}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8675059080123901, 'schemaInstance': 99L, 'amp': 3L, 'gain_error': 0.0067460970021784306, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.0, 'schemaInstance': 100L, 'amp': 4L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.9633075594902039, 'schemaInstance': 101L, 'amp': 5L, 'gain_error': 0.09635339677333832, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8739581108093262, 'schemaInstance': 102L, 'amp': 6L, 'gain_error': 0.008510432206094265, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8730504512786865, 'schemaInstance': 103L, 'amp': 7L, 'gain_error': 0.005230770446360111, 'psf_sigma': 5.159999847412109}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.0, 'schemaInstance': 104L, 'amp': 8L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8320726752281189, 'schemaInstance': 105L, 'amp': 9L, 'gain_error': 0.002124845515936613, 'psf_sigma': 5.079999923706055}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8576191067695618, 'schemaInstance': 106L, 'amp': 10L, 'gain_error': 0.007060280069708824, 'psf_sigma': 5.159999847412109}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 1.3011127710342407, 'schemaInstance': 107L, 'amp': 11L, 'gain_error': 2.662006139755249, 'psf_sigma': 5.320000171661377}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8806189894676208, 'schemaInstance': 108L, 'amp': 12L, 'gain_error': 0.007401643320918083, 'psf_sigma': 5.320000171661377}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8611921668052673, 'schemaInstance': 109L, 'amp': 13L, 'gain_error': 0.007945781573653221, 'psf_sigma': 5.159999847412109}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8131937384605408, 'schemaInstance': 110L, 'amp': 14L, 'gain_error': 0.006014048121869564, 'psf_sigma': 5.559999942779541}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8594965934753418, 'schemaInstance': 111L, 'amp': 15L, 'gain_error': 0.008172177709639072, 'psf_sigma': 5.480000019073486}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8929636478424072, 'schemaInstance': 112L, 'amp': 16L, 'gain_error': 0.007548030000180006, 'psf_sigma': 5.320000171661377}

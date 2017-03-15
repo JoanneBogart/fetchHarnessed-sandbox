@@ -407,37 +407,37 @@ class getResults():
 
     # For now, just have one list of instances
     # When we handle multiple schemas in one request it will be different
-    def _storeRunData(self, row, dtype):
+    #def _storeRunData(self, row, dtype):
+    #
+    #   schemaName = row['schname']
+    #   if schemaName not in self['schemas']:
+    #        self['schemas'][schemaName] = {}
+    #    thisSchemaDict = self['schemas'][schemaName]
 
-        schemaName = row['schname']
-        if schemaName not in self['schemas']:
-            self['schemas'][schemaName] = {}
-        thisSchemaDict = self['schemas'][schemaName]
+    #    schemaInstance = row['ressI']
+    #    myInstance = None
+    #    for i in self.returnData['instances']:
+    #        if i['schemaInstance'] == schemaInstance:
+    #            myInstance = i
 
-        schemaInstance = row['ressI']
-        myInstance = None
-        for i in self.returnData['instances']:
-            if i['schemaInstance'] == schemaInstance:
-                myInstance = i
+    #            if myInstance['activityId'] != row['aid']:
+    #                if myInstance['processId'] != row['pid']:
+    #                    # Need another instance after all
+    #                    myInstance = None
+    #                else: # Skip. > 1 activity for same step in traveler.
+    #                    return -1
+    #            break
+    #    if myInstance == None:
+    #        myInstance = {'schemaInstance' : schemaInstance, 
+    #                      'processId' : row['pid'],
+    #                      'processName' : row['pname'],
+    #                      'activityId': row['aid']}
+    #        self.returnData['instances'].append(myInstance)
 
-                if myInstance['activityId'] != row['aid']:
-                    if myInstance['processId'] != row['pid']:
-                        # Need another instance after all
-                        myInstance = None
-                    else: # Skip. > 1 activity for same step in traveler.
-                        return -1
-                break
-        if myInstance == None:
-            myInstance = {'schemaInstance' : schemaInstance, 
-                          'processId' : row['pid'],
-                          'processName' : row['pname'],
-                          'activityId': row['aid']}
-            self.returnData['instances'].append(myInstance)
-
-        if row['resname'] not in self.returnData['instances'][0].keys():
-            self.returnData['instances'][0][row['resname']] = dtype
-        myInstance[row['resname']] = row['resvalue']
-        return 1
+    #    if row['resname'] not in self.returnData['instances'][0].keys():
+    #        self.returnData['instances'][0][row['resname']] = dtype
+    #    myInstance[row['resname']] = row['resvalue']
+    #    return 1
 
 
     def _prune(self):
@@ -466,24 +466,28 @@ if __name__ == "__main__":
     htype = 'LCA-11021_RTM'
     travelerName = 'SR-RTM-EOT-03'
 
-    returnData = eT.getResultsJH(schemaName=schemaName, htype=htype, 
-                                 travelerName=travelerName,
-                                 experimentSN='LCA-11021_RTM-004_ETU2-Dev',
-                                 itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
+    #returnData = eT.getResultsJH(schemaName=schemaName, htype=htype, 
+    #                             travelerName=travelerName,
+    #                             experimentSN='LCA-11021_RTM-004_ETU2-Dev',
+    #                             itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
-    for lsstId in returnData:
-        print "\n\nKeys in dict for component: ",lsstId 
-        expDict = returnData[lsstId]
-        print "hardware id: ", returnData[lsstId]['hid']
-        print "root activity id: ", returnData[lsstId]['raid']
+    #for lsstId in returnData:
+    #    print "\n\nKeys in dict for component: ",lsstId 
+    #    expDict = returnData[lsstId]
+    #    print "hardware id: ", returnData[lsstId]['hid']
+    #    print "root activity id: ", returnData[lsstId]['raid']
 
-        nInstance = len(returnData[lsstId]['instances'])
-        i = 0
-        for d in returnData[lsstId]['instances']:
-            print "Instance #", i, " dict: ", d 
-            i += 1
+    #    nInstance = len(returnData[lsstId]['instances'])
+    #    i = 0
+    #    for d in returnData[lsstId]['instances']:
+    #        print "Instance #", i, " dict: ", d 
+    #        i += 1
 
-    runData = eT.getRunResults(4689, schemaName=schemaName,
+    print 'Calling getRunResults with arguments '
+    print 'run=', 4689
+    print 'schemaName=None'
+    print "itemFilter=('sensor_id', 'ITL-3800C-102-Dev')"
+    runData = eT.getRunResults(4689, schemaName=None,
                                itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
     for k in runData:
