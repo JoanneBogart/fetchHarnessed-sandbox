@@ -7,10 +7,10 @@ import string
 # equal to supplied value, discard
 def pruneInstances(k, v, instances):
     if k not in instances[0].keys(): return
-    print 'instance 0: ', instances[0]
+    #print 'instance 0: ', instances[0]
     ix = len(instances) - 1
-    print 'instance ', ix, ':'
-    print instances[ix]
+    #print 'instance ', ix, ':'
+    #print instances[ix]
     while ix > 0:
         if instances[ix][k] != v:
             del instances[ix]
@@ -490,19 +490,21 @@ if __name__ == "__main__":
     runData = eT.getRunResults(4689, schemaName=None,
                                itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
+    print '\n-----\n'
+    print 'Output has these simple keys: '
     for k in runData:
         #if k != 'instances':
         if k != 'schemas':
             print k,"=", runData[k]
-        else: print k
 
+    print "\n"
     for s in runData['schemas']:
         pdict = runData['schemas'][s]
-        print 'Schema name  ', s, 'has process step keys', pdict.keys()
+        print '\n\nSchema name  ', s, 'has process step keys', pdict.keys()
         for p in pdict:
             print 'process step ', p
             for instance in pdict[p]:
-                print instance
+                print "  ",instance
 
 
     #i = 0
