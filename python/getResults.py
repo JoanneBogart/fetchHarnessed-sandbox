@@ -5,7 +5,7 @@ import string
 
 # Prune list of dicts.  If key is in the dict and value is not
 # equal to supplied value, discard
-def pruneInstances(k, v, instances):
+def _pruneInstances(k, v, instances):
     if k not in instances[0].keys(): return
     #print 'instance 0: ', instances[0]
     ix = len(instances) - 1
@@ -16,6 +16,12 @@ def pruneInstances(k, v, instances):
             del instances[ix]
         ix -= 1
     return
+
+def _pruneRun(k, v, stepDict):
+    for step in stepDict:
+        schdict = stepDict[step]
+        for schname in schdict:
+            _pruneInstances(k, v, schdict[schname])
 
 def _verifyRun(run):
     try:
@@ -53,8 +59,8 @@ def  _storePaths(results, stepmap):
            "Got to new pid ", row['pid']
     return
 
-_activityStatusJoins = "join ActivityStatusHistory ASH on A.id=ASH.activityId join ActivityFinalStatus on ActivityFinalStatus.id=ASH.activityStatusId";
-_activityStatusCondition = "ActivityFinalStatus.name='success'"
+_statusJoins = "join ActivityStatusHistory ASH on A.id=ASH.activityId join ActivityFinalStatus on ActivityFinalStatus.id=ASH.activityStatusId";
+_successCondition = "ActivityFinalStatus.name='success'"
 
 
 class getResults():
@@ -208,12 +214,12 @@ class getResults():
             self.oneRai = row['rai']
             self.oneHid = row['hid']
 
-        genQuery = "select {abbr}.schemaName as schname,{abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.processId as pid,Process.name as pname,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId join ActivityFinalStatus on ActivityFinalStatus.id=ASH.activityStatusId join Process on Process.id=A.processId where ";
+        genQuery = "select {abbr}.schemaName as schname,{abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,A.processId as pid,Process.name as pname,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id " + _statusJoins + " join Process on Process.id=A.processId where ";
         if self.schemaName != None:
             genQuery += "{abbr}.schemaName='"
             genQuery += self.schemaName
             genQuery += "' and "
-        genQuery += "A.rootActivityId='" + str(self.oneRai) + "' and ActivityFinalStatus.name='success' order by  schname,A.processId asc,A.id desc, ressI asc, resname"
+        genQuery += "A.rootActivityId='" + str(self.oneRai) + "' and " + _successCondition + " order by  pid asc,schname,A.id desc, ressI asc, resname"
         floatQuery = genQuery.format(abbr='FRH', 
                                      resultsTable='FloatResultHarnessed')
         intQuery = genQuery.format(abbr='IRH', 
@@ -223,42 +229,35 @@ class getResults():
 
         
         self.returnData = {'run' : intRun, 'raid' : self.oneRai,
-                           #'schemaName' : self.schemaName,
                            'experimentSN' : self.experimentSN, 
                            'hid' : self.oneHid,
-                           'schemas' : {} }
-                           #'instances' : [{'schemaInstance' : 0}] }
+                           'steps' : {} }
         
         fresult = self.engine.execute(floatQuery)
         #for row in fresult:
         #    #print " keys: ", row.keys()
         #    self._storeRunData(row, 'float')
-        self._storeRunAll(self.returnData['schemas'], fresult, 'float')
+        self._storeRunAll(self.returnData['steps'], fresult, 'float')
         fresult.close()
         
         iresult = self.engine.execute(intQuery)
         #for row in iresult:
         #    self._storeRunData(row, 'int')
-        self._storeRunAll(self.returnData['schemas'], iresult, 'int')
+        self._storeRunAll(self.returnData['steps'], iresult, 'int')
         iresult.close()
         
         sresult = self.engine.execute(stringQuery)
         #for row in sresult:
         #    self._storeRunData(row, 'string')
-        self._storeRunAll(self.returnData['schemas'], sresult, 'string')
+        self._storeRunAll(self.returnData['steps'], sresult, 'string')
         sresult.close()
 
         if self.itemFilter is not None:
-            for sch in self.returnData['schemas']:
-                pdict = self.returnData['schemas'][sch]
-                for pname in pdict:
-                    pruneInstances(self.itemFilter[0], self.itemFilter[1],
-                                   pdict[pname])
-            #pruneInstances(self.itemFilter[0], self.itemFilter[1],
-            #               self.returnData['instances'])
-         
-                    
-        return self.returnData
+            _pruneRun(self.itemFilter[0], self.itemFilter[1],  
+                      self.returnData['steps'])
+            return self.returnData
+
+
     
     # Inputs:   run (may be integer or string form, e.g. '1256D'
     #           stepName      (e.g. 'fe55_raft_analysis')
@@ -273,8 +272,8 @@ class getResults():
 
         #if stepName == None:
         #    raise KeyError, 'stepName argument is required for othis implementation'
-        q = "select F.virtualPath as vp,P.name as pname,P.id as pid,A.id as aid from FilepathResultHarnessed F join Activity A on F.activityId=A.id " + _activityStatusJoins + " join Process P on P.id=A.processId join RunNumber on A.rootActivityId=RunNumber.rootActivityId where RunNumber.runInt='" + str(intRun)
-        q += "' and " + _activityStatusCondition
+        q = "select F.virtualPath as vp,P.name as pname,P.id as pid,A.id as aid from FilepathResultHarnessed F join Activity A on F.activityId=A.id " + _statusJoins + " join Process P on P.id=A.processId join RunNumber on A.rootActivityId=RunNumber.rootActivityId where RunNumber.runInt='" + str(intRun)
+        q += "' and " + _successCondition
         if stepName != None:
             q += " and P.name='" + stepName + "' "
         q += " order by P.id,A.id desc,F.virtualPath"
@@ -311,24 +310,24 @@ class getResults():
     # Currently this routine only can be called from getRunResults.
     # It needs to know more to know when to stop for multi-component (hence multi-run)
     # data
-    def _storeRunAll(self, schemaDicts, dbresults, dtype):
+    def _storeRunAll(self, stepDicts, dbresults, dtype):
         row = dbresults.fetchone()
-        schname = ""
         pname = ""
+        schname = ""
         while row != None:
-            if schname != row['schname']:
-                schname = row['schname']
-                if schname in schemaDicts: schdict = schemaDicts[schname]
-                else: 
-                    schdict = {}
-                    schemaDicts[schname] = schdict
-                pname=""
             if pname != row['pname']:
                 pname = row['pname']
-                if pname in schdict: ilist = schdict[pname]
+                if pname in stepDicts: pdict = stepDicts[pname]
+                else: 
+                    pdict = {}
+                    stepDicts[pname] = pdict
+                schname=""
+            if schname != row['schname']:
+                schname = row['schname']
+                if schname in pdict: ilist = pdict[schname]
                 else:
                     ilist = [{'schemaInstance':0}]
-                    schdict[pname] = ilist
+                    pdict[schname] = ilist
             row = self._storeOne(ilist, dbresults, row, dtype)   
 
         return row
@@ -354,7 +353,6 @@ class getResults():
         ilist[0][row['resname']] = dtype;
         myInstance[row['resname']] = row['resvalue']
         return dbresults.fetchone()
-
 
 
     # Data comes back sorted by hardware component (ascending), then run
@@ -468,7 +466,7 @@ class getResults():
         val = self.itemFilter[1]
         for expSN in self.returnData:
             expDict = self.returnData[expSN]
-            pruneInstances(key, val, expDict['instances'])
+            _pruneInstances(key, val, expDict['instances'])
 
         
 if __name__ == "__main__":
@@ -516,16 +514,16 @@ if __name__ == "__main__":
     print 'Output has these simple keys: '
     for k in runData:
         #if k != 'instances':
-        if k != 'schemas':
+        if k != 'steps':
             print k,"=", runData[k]
 
     print "\n"
-    for s in runData['schemas']:
-        pdict = runData['schemas'][s]
-        print '\n\nSchema name  ', s, 'has process step keys', pdict.keys()
-        for p in pdict:
-            print 'process step ', p
-            for instance in pdict[p]:
+    for step in runData['steps']:
+        schdict = runData['steps'][step]
+        print '\n\nStep name  ', step, 'has schema keys', schdict.keys()
+        for sch in schdict:
+            print 'Schema ', sch
+            for instance in schdict[sch]:
                 print "  ",instance
 
 
@@ -537,16 +535,16 @@ if __name__ == "__main__":
 
                                   
 
-    fileData = eT.getFilepaths('4689D', 'fe55_raft_analysis')
-    print "Calling getFilepaths for run 4689D step name fe55_raft_analysis"
-    for k in fileData:
-        print "step name is ", k, "Files below"
-        for f in fileData[k]:
-            print "   ", f
+    #fileData = eT.getFilepaths('4689D', 'fe55_raft_analysis')
+    #print "Calling getFilepaths for run 4689D step name fe55_raft_analysis"
+    #for k in fileData:
+    #    print "step name is ", k, "Files below"
+    #    for f in fileData[k]:
+    #        print "   ", f
 
-    fileData = eT.getFilepaths('4689D')
-    print "Calling getFilepaths for run 4689D, no step name specified"
-    for k in fileData:
-        print "step name is ", k, "Files below"
-        for f in fileData[k]:
-            print "   ", f
+    #fileData = eT.getFilepaths('4689D')
+    #print "Calling getFilepaths for run 4689D, no step name specified"
+    #for k in fileData:
+    #    print "step name is ", k, "Files below"
+    #    for f in fileData[k]:
+    #        print "   ", f
