@@ -27,21 +27,40 @@ def _verifyRun(run):
             raise
     return intRun
 
-def  _storePaths(results, pathlist):
+def  _storePaths(results, stepmap):
     row = results.fetchone()
     if (row == None):
         raise Exception("No rows found")
 
-    aid = row['aid']
+    aid = 0
+    pid = 0
+
     while (row != None):
-        if row['aid'] != aid: 
-            #print "Done since new activity id not equal to old"
-            #print "Old: ", aid, " New: ", row['aid'] 
-            break          # we're done
-        pathlist.append(row['vp'])
-        row = results.fetchone()
+        if pid != row['pid']:       # need new map entry
+            print "Create new entry for new pid, pname", row['pid'], " ",row['pname'] 
+            pid = row['pid']
+            ourList = []
+            stepmap[row['pname']] = ourList
+            aid = row['aid']
+            print "aid is ", row['aid']
+        while ((aid != row['aid']) and  (pid == row['pid'])):
+            row = results.fetchone()
+            if row == None: return
+        if (pid == row['pid']):
+            ourList.append(row['vp'])
+            row = results.fetchone()
+        else:
+           "Got to new pid ", row['pid']
+    return
+
+_activityStatusJoins = "join ActivityStatusHistory ASH on A.id=ASH.activityId join ActivityFinalStatus on ActivityFinalStatus.id=ASH.activityStatusId";
+_activityStatusCondition = "ActivityFinalStatus.name='success'"
+
 
 class getResults():
+    # Normally want data only from activities with good status. 
+    # Assume Activity is aliased as A
+
     def __init__(self, dbConnectFile='db_connect.txt'):
         self.engine = None
         self.dbConnectFile = dbConnectFile
@@ -252,17 +271,20 @@ class getResults():
         intRun = _verifyRun(run)
         self.intRun = intRun
 
-        if stepName == None:
-            raise KeyError, 'stepName argument is required for othis implementation'
-        q = "select F.virtualPath as vp,P.name,P.id,A.id as aid from FilepathResultHarnessed F join Activity A on F.activityId=A.id join Process P on P.id=A.processId join RunNumber on A.rootActivityId=RunNumber.rootActivityId where RunNumber.runInt='" + str(intRun)
-        q += "' and P.name='" + stepName 
-        q += "' order by P.id,A.id desc,F.virtualPath"
+        #if stepName == None:
+        #    raise KeyError, 'stepName argument is required for othis implementation'
+        q = "select F.virtualPath as vp,P.name as pname,P.id as pid,A.id as aid from FilepathResultHarnessed F join Activity A on F.activityId=A.id " + _activityStatusJoins + " join Process P on P.id=A.processId join RunNumber on A.rootActivityId=RunNumber.rootActivityId where RunNumber.runInt='" + str(intRun)
+        q += "' and " + _activityStatusCondition
+        if stepName != None:
+            q += " and P.name='" + stepName + "' "
+        q += " order by P.id,A.id desc,F.virtualPath"
         
-        #print "The query: "
-        #print q
+        print "\nThe query for getFilepaths: "
+        print q
+        print "\n"
         results = self.engine.execute(q)
-        self.returnData = {stepName : [ ]}
-        _storePaths(results, self.returnData[stepName])
+        self.returnData = {}
+        _storePaths(results, self.returnData)
 
         return self.returnData
 
@@ -515,8 +537,16 @@ if __name__ == "__main__":
 
                                   
 
-    #fileData = eT.getFilepaths('4689D', 'read_noise_raft')
-    #for k in fileData:
-    #    print "step name is ", k, "Files below"
-    #    for f in fileData[k]:
-    #        print "   ", f
+    fileData = eT.getFilepaths('4689D', 'fe55_raft_analysis')
+    print "Calling getFilepaths for run 4689D step name fe55_raft_analysis"
+    for k in fileData:
+        print "step name is ", k, "Files below"
+        for f in fileData[k]:
+            print "   ", f
+
+    fileData = eT.getFilepaths('4689D')
+    print "Calling getFilepaths for run 4689D, no step name specified"
+    for k in fileData:
+        print "step name is ", k, "Files below"
+        for f in fileData[k]:
+            print "   ", f
