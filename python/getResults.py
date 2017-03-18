@@ -253,7 +253,7 @@ class getResults():
         if self.itemFilter is not None:
             _pruneRun(self.itemFilter[0], self.itemFilter[1],  
                       self.returnData['steps'])
-            return self.returnData
+        return self.returnData
 
 
     
@@ -413,6 +413,7 @@ if __name__ == "__main__":
     print "htype=",htype
     print "experimentSN=",experimentSN
     print "itemFilter=('sensor_id', 'ITL-3800C-102-Dev')"    
+    #print "itemFilter not supplied"
 
     returnData = eT.getResultsJH(schemaName=schemaName, htype=htype, 
                                  travelerName=travelerName,
@@ -441,9 +442,10 @@ if __name__ == "__main__":
     print 'Calling getRunResults with arguments '
     print 'run=', 4689
     print 'schemaName=None'
-    print "itemFilter=('sensor_id', 'ITL-3800C-102-Dev')"
-    runData = eT.getRunResults(4689, schemaName=None,
-                               itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
+    print "ItemFilter not suplied"
+    #print "itemFilter=('sensor_id', 'ITL-3800C-102-Dev')"
+    runData = eT.getRunResults(4689, schemaName=None)
+                               #itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
     print '\n-----\n'
     print 'Output has these simple keys: '
