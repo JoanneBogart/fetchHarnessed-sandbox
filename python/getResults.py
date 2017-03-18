@@ -3,14 +3,13 @@ import collections
 import operator
 import string
 
+#  Private static functions
 # Prune list of dicts.  If key is in the dict and value is not
 # equal to supplied value, discard
 def _pruneInstances(k, v, instances):
     if k not in instances[0].keys(): return
-    #print 'instance 0: ', instances[0]
+
     ix = len(instances) - 1
-    #print 'instance ', ix, ':'
-    #print instances[ix]
     while ix > 0:
         if instances[ix][k] != v:
             del instances[ix]
@@ -19,8 +18,10 @@ def _pruneInstances(k, v, instances):
 
 def _pruneRun(k, v, stepDict):
     for step in stepDict:
+        #print "Pruning for step ",step
         schdict = stepDict[step]
         for schname in schdict:
+            #print "Pruning schema ", schname
             _pruneInstances(k, v, schdict[schname])
 
 def _verifyRun(run):
@@ -43,12 +44,12 @@ def  _storePaths(results, stepmap):
 
     while (row != None):
         if pid != row['pid']:       # need new map entry
-            print "Create new entry for new pid, pname", row['pid'], " ",row['pname'] 
+            #print "Create new entry for new pid, pname", row['pid'], " ",row['pname'] 
             pid = row['pid']
             ourList = []
             stepmap[row['pname']] = ourList
             aid = row['aid']
-            print "aid is ", row['aid']
+            #print "aid is ", row['aid']
         while ((aid != row['aid']) and  (pid == row['pid'])):
             row = results.fetchone()
             if row == None: return
@@ -83,6 +84,7 @@ class getResults():
         self.itemFilter = None
         self.intRun = None
         self.hardwareDict = None
+        self.returnData = None
 
     def connectDB(self):
         print 'dbConnect file is ', self.dbConnectFile
@@ -133,7 +135,7 @@ class getResults():
 
         # Retrieve list of all rootActivityId's which may be relevant
         # (correct process name; run on a component we care about)
-        rootsQuery = "select A.id as Aid, H.id as Hid, H.lsstId as expSN from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id where H.id in (" + hidQuery + ") and A.id=A.rootActivityId and P.name='" + self.travelerName + "' order by H.id asc, A.id desc"
+        rootsQuery = "select A.id as Aid, H.id as Hid, H.lsstId as expSN, RunNumber.runNumber as runString,RunNumber.runInt as runInt  from Hardware H join Activity A on H.id=A.hardwareId join Process P on A.processId=P.id join RunNumber on RunNumber.rootActivityId=A.rootActivityId where H.id in (" + hidQuery + ") and A.id=A.rootActivityId and P.name='" + self.travelerName + "' order by H.id asc, A.id desc"
 
         #print "Query to find traveler root ids of interest\n"
         #print rootsQuery, "\n"
@@ -142,10 +144,12 @@ class getResults():
         # Make dict associating Hid and expSN and list of root id's of interest
         raiList = []
         self.hardwareDict = {}
+        self.runDict = {}
         for row in result:
             #print "hid=",row['Hid']," rootId=",row['Aid']
             raiList.append(str(row['Aid']))
             self.hardwareDict[row['Hid']] = row['expSN']
+            self.runDict[row['Aid']] = {'runString' : row['runString'], 'runInt' : row['runInt']}
 
         result.close()
 
@@ -157,9 +161,13 @@ class getResults():
         raiString = "('" + string.join(raiList, "','") + "')"
         #print "raiString: ", raiString, "\n"
             
-        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,A.id as aid,Process.name as pname,A.rootActivityId as raid, A.hardwareId as hid,A.processId as pid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id join ActivityStatusHistory ASH on A.id=ASH.activityId join Process on Process.id=A.processId where {abbr}.schemaName='"
+        genQuery = "select {abbr}.name as resname,{abbr}.value as resvalue,{abbr}.schemaInstance as ressI,{abbr}.schemaname as schname, A.id as aid,Process.name as pname,A.rootActivityId as raid, A.hardwareId as hid,A.processId as pid,ASH.activityStatusId as actStatus from {resultsTable} {abbr} join Activity A on {abbr}.activityId=A.id "
+        genQuery += _statusJoins;
+        genQuery += " join Process on Process.id=A.processId where {abbr}.schemaName='"
         genQuery += self.schemaName
-        genQuery += "' and A.rootActivityId in " + raiString + " and ASH.activityStatusId='1' order by A.hardwareId asc, A.rootActivityId desc, A.processId asc, A.id desc, ressI asc, resname"
+        genQuery += "' and A.rootActivityId in " + raiString + " and "
+        genQuery += _successCondition
+        genQuery += " order by A.hardwareId asc, A.rootActivityId desc, pid asc, schname, A.id desc, ressI asc, resname"
         floatQuery = genQuery.format(abbr='FRH', 
                                      resultsTable='FloatResultHarnessed')
         intQuery = genQuery.format(abbr='IRH', 
@@ -174,13 +182,13 @@ class getResults():
 
         fresult = self.engine.execute(floatQuery)
 
-        self._storeLastRun(fresult, 'float')
+        self._storeForJH(fresult, 'float')
 
         iresult = self.engine.execute(intQuery)
-        self._storeLastRun(iresult, 'int')
+        self._storeForJH(iresult, 'int')
 
         sresult = self.engine.execute(stringQuery)
-        self._storeLastRun(sresult, 'string')
+        self._storeForJH(sresult, 'string')
 
         if self.itemFilter is not None:
             self._prune( )
@@ -190,9 +198,6 @@ class getResults():
     # Public routine: get results for a known run
     def getRunResults(self, run, schemaName=None, itemFilter=None):
         self._clearCache()
-        #if schemaName == None:
-        #    print "Schema name required for this version of getRunResults"
-        #    print "Have a nice day"
         if run == None:
             print "Run number is a required argument for getRunResults"
             print "Have a nice day"
@@ -234,22 +239,15 @@ class getResults():
                            'steps' : {} }
         
         fresult = self.engine.execute(floatQuery)
-        #for row in fresult:
-        #    #print " keys: ", row.keys()
-        #    self._storeRunData(row, 'float')
-        self._storeRunAll(self.returnData['steps'], fresult, 'float')
+        self._storeRunAll(self.returnData['steps'], fresult, 'float', 0)
         fresult.close()
         
         iresult = self.engine.execute(intQuery)
-        #for row in iresult:
-        #    self._storeRunData(row, 'int')
-        self._storeRunAll(self.returnData['steps'], iresult, 'int')
+        self._storeRunAll(self.returnData['steps'], iresult, 'int', 0)
         iresult.close()
         
         sresult = self.engine.execute(stringQuery)
-        #for row in sresult:
-        #    self._storeRunData(row, 'string')
-        self._storeRunAll(self.returnData['steps'], sresult, 'string')
+        self._storeRunAll(self.returnData['steps'], sresult, 'string', 0)
         sresult.close()
 
         if self.itemFilter is not None:
@@ -270,17 +268,15 @@ class getResults():
         intRun = _verifyRun(run)
         self.intRun = intRun
 
-        #if stepName == None:
-        #    raise KeyError, 'stepName argument is required for othis implementation'
         q = "select F.virtualPath as vp,P.name as pname,P.id as pid,A.id as aid from FilepathResultHarnessed F join Activity A on F.activityId=A.id " + _statusJoins + " join Process P on P.id=A.processId join RunNumber on A.rootActivityId=RunNumber.rootActivityId where RunNumber.runInt='" + str(intRun)
         q += "' and " + _successCondition
         if stepName != None:
             q += " and P.name='" + stepName + "' "
         q += " order by P.id,A.id desc,F.virtualPath"
         
-        print "\nThe query for getFilepaths: "
-        print q
-        print "\n"
+        #print "\nThe query for getFilepaths: "
+        #print q
+        #print "\n"
         results = self.engine.execute(q)
         self.returnData = {}
         _storePaths(results, self.returnData)
@@ -310,11 +306,20 @@ class getResults():
     # Currently this routine only can be called from getRunResults.
     # It needs to know more to know when to stop for multi-component (hence multi-run)
     # data
-    def _storeRunAll(self, stepDicts, dbresults, dtype):
-        row = dbresults.fetchone()
+    def _storeRunAll(self, stepDicts, dbresults, dtype, hid, row=None):
+        if row==None: row = dbresults.fetchone()
         pname = ""
         schname = ""
+        if hid > 0: raid = row['raid']
+        else: raid = 0
+
         while row != None:
+            if raid > 0:
+                if row['raid'] != raid:
+                    while row['hid'] == hid:
+                        row = dbresults.fetchone()
+                        if row == None: return None
+
             if pname != row['pname']:
                 pname = row['pname']
                 if pname in stepDicts: pdict = stepDicts[pname]
@@ -329,6 +334,9 @@ class getResults():
                     ilist = [{'schemaInstance':0}]
                     pdict[schname] = ilist
             row = self._storeOne(ilist, dbresults, row, dtype)   
+            if hid > 0:
+                if row == None: return None
+                if row['hid'] != hid: return row
 
         return row
     
@@ -354,111 +362,24 @@ class getResults():
         myInstance[row['resname']] = row['resvalue']
         return dbresults.fetchone()
 
-
-    # Data comes back sorted by hardware component (ascending), then run
-    # (root activity id, descending) We only want data from the most
-    # recent run. _storeData tells us when to move on to next component
-    def _storeLastRun(self, dbresults, dtype):
+    def _storeForJH(self, dbresults, dtype):
         row = dbresults.fetchone()
+        if row==None: return
+
         while (row != None):
-          expSN = self.hardwareDict[row['hid']]
-          oldHid = row['hid']
-          iRow = 1
-          while ((row != None) and (oldHid == row['hid']) ):
-              more = self._storeData(expSN, row, dtype)
-              if (more == 0):       # skip to next expSN
-                  #print "Got more == 0 on iRow ", iRow
-                  while oldHid == row['hid']:
-                      row = dbresults.fetchone()
-                      iRow +=1
-                      if row == None: break
-              else:
-                  row = dbresults.fetchone()
-                  iRow += 1
-        #print "total # of rows: ", iRow
-        dbresults.close()
-
-
-    # Store a single value, creating containing dicts as needed
-    # Returns 0 if new (older) root act. id was encountered, else 1
-    def _storeData(self, expSN, row, dtype):
-        if expSN not in self.returnData:
-            self.returnData[expSN] = expDict = {}
-            expDict['hid'] = row['hid']
-            expDict['raid'] = row['raid']
-
-            #  First instance record will be used for type information
-            expDict['instances'] = [{'schemaInstance' : 0}]
-        else : expDict = self.returnData[expSN]
-
-        if expDict['raid'] != row['raid']:
-            #print 'Discarding data from traveler with raid=', row['raid']
-            #print 'after storing data for traveler with raid=', expDict['raid']
-            return 0
-
-        schemaInstance = row['ressI']
-        # Note instance numbers always start with 1; list indices with 0
-
-        # Make our instance record if it doesn't already exist
-        myInstance = None
-        for i in expDict['instances']:
-            if i['schemaInstance'] == schemaInstance:
-                myInstance = i
-
-                if myInstance['activityId'] != row['aid']:
-                    if myInstance['processId'] != row['pid']:
-                        # Need another instance after all
-                        myInstance = None
-                    else: # Skip. > 1 activity for same step in traveler.
-                        return -1
-                break
-        if myInstance == None:
-            myInstance = {'schemaInstance' : schemaInstance}
-            expDict['instances'].append(myInstance)
-            myInstance['activityId']  = row['aid']
-            myInstance['processId'] = row['pid']
-            myInstance['processName'] = row['pname']
-
-        if row['resname'] not in expDict['instances'][0].keys():
-            expDict['instances'][0][row['resname']] = dtype
-        myInstance[row['resname']] = row['resvalue']
-
-        return 1
-
-    # For now, just have one list of instances
-    # When we handle multiple schemas in one request it will be different
-    #def _storeRunData(self, row, dtype):
-    #
-    #   schemaName = row['schname']
-    #   if schemaName not in self['schemas']:
-    #        self['schemas'][schemaName] = {}
-    #    thisSchemaDict = self['schemas'][schemaName]
-
-    #    schemaInstance = row['ressI']
-    #    myInstance = None
-    #    for i in self.returnData['instances']:
-    #        if i['schemaInstance'] == schemaInstance:
-    #            myInstance = i
-
-    #            if myInstance['activityId'] != row['aid']:
-    #                if myInstance['processId'] != row['pid']:
-    #                    # Need another instance after all
-    #                    myInstance = None
-    #                else: # Skip. > 1 activity for same step in traveler.
-    #                    return -1
-    #            break
-    #    if myInstance == None:
-    #        myInstance = {'schemaInstance' : schemaInstance, 
-    #                      'processId' : row['pid'],
-    #                      'processName' : row['pname'],
-    #                      'activityId': row['aid']}
-    #        self.returnData['instances'].append(myInstance)
-
-    #    if row['resname'] not in self.returnData['instances'][0].keys():
-    #        self.returnData['instances'][0][row['resname']] = dtype
-    #    myInstance[row['resname']] = row['resvalue']
-    #    return 1
-
+            hid = row['hid']
+            expSN = self.hardwareDict[hid]
+            if expSN in self.returnData:
+                expDict = self.returnData[expSN]
+            else:
+                expDict = {'hid' : hid, 'raid' : row['raid'],
+                          'runString' : self.runDict[row['raid']]['runString'],
+                          'runInt' : self.runDict[row['raid']]['runInt'],
+                          'steps' : {}}
+                self.returnData[expSN] = expDict
+            stepDict = expDict['steps']
+                
+            row = self._storeRunAll(stepDict, dbresults, dtype, hid, row)
 
     def _prune(self):
         if self.itemFilter is None: return
@@ -466,7 +387,7 @@ class getResults():
         val = self.itemFilter[1]
         for expSN in self.returnData:
             expDict = self.returnData[expSN]
-            _pruneInstances(key, val, expDict['instances'])
+            _pruneRun(key, val, expDict['steps'])
 
         
 if __name__ == "__main__":
@@ -485,24 +406,38 @@ if __name__ == "__main__":
     schemaName = 'fe55_raft_analysis'
     htype = 'LCA-11021_RTM'
     travelerName = 'SR-RTM-EOT-03'
+    experimentSN='LCA-11021_RTM-004_ETU2-Dev'
 
-    #returnData = eT.getResultsJH(schemaName=schemaName, htype=htype, 
-    #                             travelerName=travelerName,
-    #                             experimentSN='LCA-11021_RTM-004_ETU2-Dev',
-    #                             itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
+    print "Calling getResultsJH with arguments"
+    print "schemaName=",schemaName
+    print "htype=",htype
+    print "experimentSN=",experimentSN
+    print "itemFilter=('sensor_id', 'ITL-3800C-102-Dev')"    
 
-    #for lsstId in returnData:
-    #    print "\n\nKeys in dict for component: ",lsstId 
-    #    expDict = returnData[lsstId]
-    #    print "hardware id: ", returnData[lsstId]['hid']
-    #    print "root activity id: ", returnData[lsstId]['raid']
+    returnData = eT.getResultsJH(schemaName=schemaName, htype=htype, 
+                                 travelerName=travelerName,
+                                 experimentSN=experimentSN,
+                                 itemFilter=('sensor_id', 'ITL-3800C-102-Dev'))
 
-    #    nInstance = len(returnData[lsstId]['instances'])
-    #    i = 0
-    #    for d in returnData[lsstId]['instances']:
-    #        print "Instance #", i, " dict: ", d 
-    #        i += 1
+    for lsstId in returnData:
+        print "\n\nKeys in dict for component: ",lsstId 
+        expDict = returnData[lsstId]
+        for k in expDict:
+            if k != 'steps':
+                print k, " : ", expDict[k]
 
+        nSteps = len(expDict['steps'])
+        print "Includes data for ", nSteps, " steps"
+        for step in expDict['steps']:
+            print "step name: ", step
+            stepDict = expDict['steps'][step]
+            for sch in stepDict:
+                schemaList = stepDict[sch]
+                "Found ", len(schemaList), " instances for schema ", sch
+                for inst in schemaList:
+                    print inst
+        
+    print '\n*******\n\n'
     print 'Calling getRunResults with arguments '
     print 'run=', 4689
     print 'schemaName=None'
@@ -513,7 +448,6 @@ if __name__ == "__main__":
     print '\n-----\n'
     print 'Output has these simple keys: '
     for k in runData:
-        #if k != 'instances':
         if k != 'steps':
             print k,"=", runData[k]
 
@@ -527,24 +461,16 @@ if __name__ == "__main__":
                 print "  ",instance
 
 
-    #i = 0
-                                   
-    #for d in runData['instances']:
-    #    print "Instance #", i, " dict: ", d
-    #    i += 1
+    print "Calling getFilepaths for run 4689D step name fe55_raft_analysis"
+    fileData = eT.getFilepaths('4689D', 'fe55_raft_analysis')
+    for k in fileData:
+        print "step name is ", k, "Files below"
+        for f in fileData[k]:
+            print "   ", f
 
-                                  
-
-    #fileData = eT.getFilepaths('4689D', 'fe55_raft_analysis')
-    #print "Calling getFilepaths for run 4689D step name fe55_raft_analysis"
-    #for k in fileData:
-    #    print "step name is ", k, "Files below"
-    #    for f in fileData[k]:
-    #        print "   ", f
-
-    #fileData = eT.getFilepaths('4689D')
-    #print "Calling getFilepaths for run 4689D, no step name specified"
-    #for k in fileData:
-    #    print "step name is ", k, "Files below"
-    #    for f in fileData[k]:
-    #        print "   ", f
+    print "Calling getFilepaths for run 4689D, no step name specified"
+    fileData = eT.getFilepaths('4689D')
+    for k in fileData:
+        print "step name is ", k, "Files below"
+        for f in fileData[k]:
+            print "   ", f

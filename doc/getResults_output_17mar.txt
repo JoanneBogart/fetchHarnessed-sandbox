@@ -1,0 +1,808 @@
+dbConnect file is  /u/ey/jrb/et_dev_query.txt
+connected to host mysql-dev01.slac.stanford.edu
+Calling getResultsJH with arguments
+schemaName= fe55_raft_analysis
+htype= LCA-11021_RTM
+experimentSN= LCA-11021_RTM-004_ETU2-Dev
+itemFilter=('sensor_id', 'ITL-3800C-102-Dev')
+
+
+Keys in dict for component:  LCA-11021_RTM-004_ETU2-Dev
+raid  :  27200
+runInt  :  4727
+hid  :  1011
+runString  :  4727D
+Includes data for  1  steps
+step name:  fe55_raft_analysis
+{'slot': 'string', 'sensor_id': 'string', 'gain': 'float', 'schemaInstance': 0, 'amp': 'int', 'gain_error': 'float', 'psf_sigma': 'float'}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.0, 'schemaInstance': 97L, 'amp': 1L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.899674654006958, 'schemaInstance': 98L, 'amp': 2L, 'gain_error': 0.006652287673205137, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.9113095998764038, 'schemaInstance': 99L, 'amp': 3L, 'gain_error': 0.006355305202305317, 'psf_sigma': 5.320000171661377}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.0, 'schemaInstance': 100L, 'amp': 4L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.863193929195404, 'schemaInstance': 101L, 'amp': 5L, 'gain_error': 0.0029560846742242575, 'psf_sigma': 5.159999847412109}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.8775351643562317, 'schemaInstance': 102L, 'amp': 6L, 'gain_error': 0.006548154633492231, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.8949748277664185, 'schemaInstance': 103L, 'amp': 7L, 'gain_error': 0.004415331408381462, 'psf_sigma': 5.159999847412109}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.0, 'schemaInstance': 104L, 'amp': 8L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.8393166065216064, 'schemaInstance': 105L, 'amp': 9L, 'gain_error': 0.0028434668201953173, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.8752171397209167, 'schemaInstance': 106L, 'amp': 10L, 'gain_error': 0.0055443476885557175, 'psf_sigma': 5.320000171661377}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.8369543552398682, 'schemaInstance': 107L, 'amp': 11L, 'gain_error': 0.005091001745313406, 'psf_sigma': 5.400000095367432}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.918177604675293, 'schemaInstance': 108L, 'amp': 12L, 'gain_error': 0.006796331610530615, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.7916344404220581, 'schemaInstance': 109L, 'amp': 13L, 'gain_error': 0.005332266446202993, 'psf_sigma': 5.639999866485596}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.9200044870376587, 'schemaInstance': 110L, 'amp': 14L, 'gain_error': 0.008872408419847488, 'psf_sigma': 5.320000171661377}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.8433833122253418, 'schemaInstance': 111L, 'amp': 15L, 'gain_error': 0.008148369379341602, 'psf_sigma': 5.239999771118164}
+{'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 27209L, 'gain': 0.9149676561355591, 'schemaInstance': 112L, 'amp': 16L, 'gain_error': 0.5779092907905579, 'psf_sigma': 5.320000171661377}
+
+*******
+
+
+Calling getRunResults with arguments 
+run= 4689
+schemaName=None
+itemFilter=('sensor_id', 'ITL-3800C-102-Dev')
+
+-----
+
+Output has these simple keys: 
+hid = 1011
+raid = 26730
+experimentSN = LCA-11021_RTM-004_ETU2-Dev
+run = 4689
+
+
+
+
+Step name   read_noise_raft has schema keys ['read_noise_raft', 'job_info', 'package_versions']
+Schema  read_noise_raft
+   {'system_noise': 'float', 'slot': 'string', 'sensor_id': 'string', 'read_noise': 'float', 'total_noise': 'float', 'schemaInstance': 0, 'amp': 'int'}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 0.0, 'total_noise': 0.0, 'activityId': 26784L, 'schemaInstance': 97L, 'amp': 1L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 13.270350456237793, 'total_noise': 13.270350456237793, 'activityId': 26784L, 'schemaInstance': 98L, 'amp': 2L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.393224716186523, 'total_noise': 16.393224716186523, 'activityId': 26784L, 'schemaInstance': 99L, 'amp': 3L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 0.0, 'total_noise': 0.0, 'activityId': 26784L, 'schemaInstance': 100L, 'amp': 4L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 18.129140853881836, 'total_noise': 18.129140853881836, 'activityId': 26784L, 'schemaInstance': 101L, 'amp': 5L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.505123138427734, 'total_noise': 16.505123138427734, 'activityId': 26784L, 'schemaInstance': 102L, 'amp': 6L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.246488571166992, 'total_noise': 16.246488571166992, 'activityId': 26784L, 'schemaInstance': 103L, 'amp': 7L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 0.0, 'total_noise': 0.0, 'activityId': 26784L, 'schemaInstance': 104L, 'amp': 8L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 11.612844467163086, 'total_noise': 11.612844467163086, 'activityId': 26784L, 'schemaInstance': 105L, 'amp': 9L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 15.764790534973145, 'total_noise': 15.764790534973145, 'activityId': 26784L, 'schemaInstance': 106L, 'amp': 10L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 24.7298526763916, 'total_noise': 24.7298526763916, 'activityId': 26784L, 'schemaInstance': 107L, 'amp': 11L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 16.42471694946289, 'total_noise': 16.42471694946289, 'activityId': 26784L, 'schemaInstance': 108L, 'amp': 12L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 15.640118598937988, 'total_noise': 15.640118598937988, 'activityId': 26784L, 'schemaInstance': 109L, 'amp': 13L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 15.861257553100586, 'total_noise': 15.861257553100586, 'activityId': 26784L, 'schemaInstance': 110L, 'amp': 14L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 17.602685928344727, 'total_noise': 17.602685928344727, 'activityId': 26784L, 'schemaInstance': 111L, 'amp': 15L}
+   {'system_noise': 0.0, 'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'read_noise': 17.88789176940918, 'total_noise': 17.88789176940918, 'activityId': 26784L, 'schemaInstance': 112L, 'amp': 16L}
+Schema  job_info
+   {'job_id': 'string', 'schemaInstance': 0, 'job_name': 'string'}
+   {'activityId': 26784L, 'job_id': '26784', 'schemaInstance': 1L, 'job_name': 'read_noise_raft'}
+Schema  package_versions
+   {'version': 'string', 'schemaInstance': 0, 'package': 'string'}
+   {'activityId': 26784L, 'version': '0.4.34', 'schemaInstance': 1L, 'package': 'harnessed-jobs'}
+   {'activityId': 26784L, 'version': '0.13.0', 'schemaInstance': 2L, 'package': 'lcatr-harness'}
+   {'activityId': 26784L, 'version': '0.5.2', 'schemaInstance': 3L, 'package': 'lcatr-schema'}
+   {'activityId': 26784L, 'version': '0.3.1', 'schemaInstance': 4L, 'package': 'lcatr-modulefiles'}
+   {'activityId': 26784L, 'version': '0.0.20', 'schemaInstance': 5L, 'package': 'eotest'}
+   {'activityId': 26784L, 'version': '1.2.2', 'schemaInstance': 6L, 'package': 'eTraveler-clientAPI'}
+   {'activityId': 26784L, 'version': '0.0.11', 'schemaInstance': 7L, 'package': 'config_files'}
+   {'activityId': 26784L, 'version': '0.0.4', 'schemaInstance': 8L, 'package': 'camera-model'}
+   {'activityId': 26784L, 'version': '0.0.4', 'schemaInstance': 9L, 'package': 'EO-analysis-jobs'}
+   {'activityId': 26784L, 'version': '0.0.2', 'schemaInstance': 10L, 'package': 'sequencer-files'}
+   {'activityId': 26784L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 11L, 'package': 'org-lsst-ccs-subsystem-ts8-main'}
+   {'activityId': 26784L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 12L, 'package': 'org-lsst-ccs-subsystem-ts8-gui'}
+   {'activityId': 26784L, 'version': '2.0.1', 'schemaInstance': 13L, 'package': 'org-lsst-ccs-localdb-main'}
+   {'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 14L, 'package': 'symlink.ts8'}
+   {'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 15L, 'package': 'symlink.ts8Sim'}
+   {'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-gui', 'schemaInstance': 16L, 'package': 'symlink.CCS-Console'}
+   {'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 17L, 'package': 'symlink.JythonConsole'}
+   {'activityId': 26784L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 18L, 'package': 'symlink.ShellCommandConsole'}
+   {'activityId': 26784L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 19L, 'package': 'symlink.LocalRestServices'}
+   {'activityId': 26784L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 20L, 'package': 'symlink.TrendingIngestModule'}
+   {'activityId': 26784L, 'version': '/home/ts8prod/miniconda2/', 'schemaInstance': 21L, 'package': 'stack_dir'}
+
+
+Step name   fe55_raft_acq has schema keys ['job_info', 'eo_acq', 'package_versions']
+Schema  job_info
+   {'job_id': 'string', 'schemaInstance': 0, 'job_name': 'string'}
+   {'activityId': 26776L, 'job_id': '26776', 'schemaInstance': 1L, 'job_name': 'fe55_raft_acq'}
+Schema  eo_acq
+   {'stat': 'int', 'power_version': 'string', 'teststand_version': 'string', 'archon_version': 'string', 'teststand_revision': 'string', 'schemaInstance': 0, 'power_revision': 'string', 'ts8_revision': 'string', 'archon_revision': 'string', 'ts8_version': 'string'}
+   {'stat': 845827L, 'power_version': '1.1.1-SNAPSHOT', 'teststand_version': '1.1.21-SNAPSHOT', 'archon_version': 'NA', 'activityId': 26776L, 'teststand_revision': '40042', 'schemaInstance': 1L, 'power_revision': '', 'ts8_revision': '40013', 'archon_revision': 'NA', 'ts8_version': '1.0.11-SNAPSHOT'}
+Schema  package_versions
+   {'version': 'string', 'schemaInstance': 0, 'package': 'string'}
+   {'activityId': 26776L, 'version': '0.4.34', 'schemaInstance': 1L, 'package': 'harnessed-jobs'}
+   {'activityId': 26776L, 'version': '0.13.0', 'schemaInstance': 2L, 'package': 'lcatr-harness'}
+   {'activityId': 26776L, 'version': '0.5.2', 'schemaInstance': 3L, 'package': 'lcatr-schema'}
+   {'activityId': 26776L, 'version': '0.3.1', 'schemaInstance': 4L, 'package': 'lcatr-modulefiles'}
+   {'activityId': 26776L, 'version': '0.0.20', 'schemaInstance': 5L, 'package': 'eotest'}
+   {'activityId': 26776L, 'version': '1.2.2', 'schemaInstance': 6L, 'package': 'eTraveler-clientAPI'}
+   {'activityId': 26776L, 'version': '0.0.11', 'schemaInstance': 7L, 'package': 'config_files'}
+   {'activityId': 26776L, 'version': '0.0.4', 'schemaInstance': 8L, 'package': 'camera-model'}
+   {'activityId': 26776L, 'version': '0.0.4', 'schemaInstance': 9L, 'package': 'EO-analysis-jobs'}
+   {'activityId': 26776L, 'version': '0.0.2', 'schemaInstance': 10L, 'package': 'sequencer-files'}
+   {'activityId': 26776L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 11L, 'package': 'org-lsst-ccs-subsystem-ts8-main'}
+   {'activityId': 26776L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 12L, 'package': 'org-lsst-ccs-subsystem-ts8-gui'}
+   {'activityId': 26776L, 'version': '2.0.1', 'schemaInstance': 13L, 'package': 'org-lsst-ccs-localdb-main'}
+   {'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 14L, 'package': 'symlink.ts8'}
+   {'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 15L, 'package': 'symlink.ts8Sim'}
+   {'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-gui', 'schemaInstance': 16L, 'package': 'symlink.CCS-Console'}
+   {'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 17L, 'package': 'symlink.JythonConsole'}
+   {'activityId': 26776L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 18L, 'package': 'symlink.ShellCommandConsole'}
+   {'activityId': 26776L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 19L, 'package': 'symlink.LocalRestServices'}
+   {'activityId': 26776L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 20L, 'package': 'symlink.TrendingIngestModule'}
+   {'activityId': 26776L, 'version': '/home/ts8prod/miniconda2/', 'schemaInstance': 21L, 'package': 'stack_dir'}
+
+
+Step name   fe55_raft_analysis has schema keys ['job_info', 'package_versions', 'fe55_raft_analysis']
+Schema  job_info
+   {'job_id': 'string', 'schemaInstance': 0, 'job_name': 'string'}
+   {'activityId': 26777L, 'job_id': '26777', 'schemaInstance': 1L, 'job_name': 'fe55_raft_analysis'}
+Schema  package_versions
+   {'version': 'string', 'schemaInstance': 0, 'package': 'string'}
+   {'activityId': 26777L, 'version': '0.4.34', 'schemaInstance': 1L, 'package': 'harnessed-jobs'}
+   {'activityId': 26777L, 'version': '0.13.0', 'schemaInstance': 2L, 'package': 'lcatr-harness'}
+   {'activityId': 26777L, 'version': '0.5.2', 'schemaInstance': 3L, 'package': 'lcatr-schema'}
+   {'activityId': 26777L, 'version': '0.3.1', 'schemaInstance': 4L, 'package': 'lcatr-modulefiles'}
+   {'activityId': 26777L, 'version': '0.0.20', 'schemaInstance': 5L, 'package': 'eotest'}
+   {'activityId': 26777L, 'version': '1.2.2', 'schemaInstance': 6L, 'package': 'eTraveler-clientAPI'}
+   {'activityId': 26777L, 'version': '0.0.11', 'schemaInstance': 7L, 'package': 'config_files'}
+   {'activityId': 26777L, 'version': '0.0.4', 'schemaInstance': 8L, 'package': 'camera-model'}
+   {'activityId': 26777L, 'version': '0.0.4', 'schemaInstance': 9L, 'package': 'EO-analysis-jobs'}
+   {'activityId': 26777L, 'version': '0.0.2', 'schemaInstance': 10L, 'package': 'sequencer-files'}
+   {'activityId': 26777L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 11L, 'package': 'org-lsst-ccs-subsystem-ts8-main'}
+   {'activityId': 26777L, 'version': '1.0.11-SNAPSHOT', 'schemaInstance': 12L, 'package': 'org-lsst-ccs-subsystem-ts8-gui'}
+   {'activityId': 26777L, 'version': '2.0.1', 'schemaInstance': 13L, 'package': 'org-lsst-ccs-localdb-main'}
+   {'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 14L, 'package': 'symlink.ts8'}
+   {'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 15L, 'package': 'symlink.ts8Sim'}
+   {'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-gui', 'schemaInstance': 16L, 'package': 'symlink.CCS-Console'}
+   {'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 17L, 'package': 'symlink.JythonConsole'}
+   {'activityId': 26777L, 'version': 'org-lsst-ccs-subsystem-ts8-main', 'schemaInstance': 18L, 'package': 'symlink.ShellCommandConsole'}
+   {'activityId': 26777L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 19L, 'package': 'symlink.LocalRestServices'}
+   {'activityId': 26777L, 'version': 'org-lsst-ccs-localdb-main', 'schemaInstance': 20L, 'package': 'symlink.TrendingIngestModule'}
+   {'activityId': 26777L, 'version': '/home/ts8prod/miniconda2/', 'schemaInstance': 21L, 'package': 'stack_dir'}
+Schema  fe55_raft_analysis
+   {'slot': 'string', 'sensor_id': 'string', 'gain': 'float', 'schemaInstance': 0, 'amp': 'int', 'gain_error': 'float', 'psf_sigma': 'float'}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.0, 'schemaInstance': 97L, 'amp': 1L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.7107992768287659, 'schemaInstance': 98L, 'amp': 2L, 'gain_error': 0.6366345882415771, 'psf_sigma': 5.320000171661377}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8675059080123901, 'schemaInstance': 99L, 'amp': 3L, 'gain_error': 0.0067460970021784306, 'psf_sigma': 5.239999771118164}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.0, 'schemaInstance': 100L, 'amp': 4L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.9633075594902039, 'schemaInstance': 101L, 'amp': 5L, 'gain_error': 0.09635339677333832, 'psf_sigma': 5.239999771118164}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8739581108093262, 'schemaInstance': 102L, 'amp': 6L, 'gain_error': 0.008510432206094265, 'psf_sigma': 5.239999771118164}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8730504512786865, 'schemaInstance': 103L, 'amp': 7L, 'gain_error': 0.005230770446360111, 'psf_sigma': 5.159999847412109}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.0, 'schemaInstance': 104L, 'amp': 8L, 'gain_error': 0.0, 'psf_sigma': 0.0}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8320726752281189, 'schemaInstance': 105L, 'amp': 9L, 'gain_error': 0.002124845515936613, 'psf_sigma': 5.079999923706055}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8576191067695618, 'schemaInstance': 106L, 'amp': 10L, 'gain_error': 0.007060280069708824, 'psf_sigma': 5.159999847412109}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 1.3011127710342407, 'schemaInstance': 107L, 'amp': 11L, 'gain_error': 2.662006139755249, 'psf_sigma': 5.320000171661377}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8806189894676208, 'schemaInstance': 108L, 'amp': 12L, 'gain_error': 0.007401643320918083, 'psf_sigma': 5.320000171661377}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8611921668052673, 'schemaInstance': 109L, 'amp': 13L, 'gain_error': 0.007945781573653221, 'psf_sigma': 5.159999847412109}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8131937384605408, 'schemaInstance': 110L, 'amp': 14L, 'gain_error': 0.006014048121869564, 'psf_sigma': 5.559999942779541}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8594965934753418, 'schemaInstance': 111L, 'amp': 15L, 'gain_error': 0.008172177709639072, 'psf_sigma': 5.480000019073486}
+   {'slot': 'S20', 'sensor_id': 'ITL-3800C-102-Dev', 'activityId': 26777L, 'gain': 0.8929636478424072, 'schemaInstance': 112L, 'amp': 16L, 'gain_error': 0.007548030000180006, 'psf_sigma': 5.320000171661377}
+Calling getFilepaths for run 4689D step name fe55_raft_analysis
+step name is  fe55_raft_analysis Files below
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-017-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-017-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-017-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-018-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-018-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-018-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-022-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-022-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-022-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-041-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-041-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-041-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-100-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-100-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-100-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-102-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-102-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-102-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-103-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-103-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-103-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-145-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-145-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-145-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-146-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-146-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-146-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_psf_dists.png
+Calling getFilepaths for run 4689D, no step name specified
+step name is  read_noise_raft Files below
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S00/ITL-3800C-145-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S01/ITL-3800C-022-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S02/ITL-3800C-041-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S10/ITL-3800C-100-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S11/ITL-3800C-017-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S12/ITL-3800C-018-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S20/ITL-3800C-102-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S21/ITL-3800C-146-Dev_read_noise_024.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_noise.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_000.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_001.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_002.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_003.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_004.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_006.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_007.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_008.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_009.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_010.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_011.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_012.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_013.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_014.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_015.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_016.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_017.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_018.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_019.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_020.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_021.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_022.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/read_noise_raft/v0/26784/S22/ITL-3800C-103-Dev_read_noise_024.fits
+step name is  fe55_raft_analysis Files below
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-017-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-017-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-017-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-018-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-018-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-018-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-022-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-022-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-022-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-041-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-041-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-041-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-100-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-100-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-100-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-102-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-102-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-102-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-103-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-103-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-103-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-145-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-145-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-145-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-146-Dev_eotest_results.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-146-Dev_psf_results_nsig4.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/ITL-3800C-146-Dev_rolloff_defects_mask.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S00/ITL-3800C-145-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S01/ITL-3800C-022-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S02/ITL-3800C-041-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S10/ITL-3800C-100-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S11/ITL-3800C-017-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S12/ITL-3800C-018-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S20/ITL-3800C-102-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_fe55_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S21/ITL-3800C-146-Dev_psf_dists.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_fe55_zoom.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_gains.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_mean_bias.png
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_mean_bias_1.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_analysis/v0/26777/S22/ITL-3800C-103-Dev_psf_dists.png
+step name is  fe55_raft_acq Files below
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/2017-03-03T003156us239483_26776.log
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/eo_acq.log
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S00/ITL-3800C-145-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S01/ITL-3800C-022-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S02/ITL-3800C-041-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S10/ITL-3800C-100-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S11/ITL-3800C-017-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S12/ITL-3800C-018-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S20/ITL-3800C-102-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S21/ITL-3800C-146-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_bias_000_4689D_20170303053340.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303053828.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303054357.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303054927.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303055500.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303060023.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303060547.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303061112.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303061635.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303062158.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303062726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303063255.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303063818.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303064348.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303064916.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303065441.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303070005.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303070535.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303071105.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303071637.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303072202.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303072726.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303073252.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303073823.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303074353.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/S22/ITL-3800C-103-Dev_fe55_fe55_000_4689D_20170303074914.fits
+    /LSST/mirror/BNL-test/test/LCA-11021_RTM/LCA-11021_RTM-004_ETU2-Dev/4689D/fe55_raft_acq/v0/26776/TS8_ITL_ResetFirst_20170301.seq
